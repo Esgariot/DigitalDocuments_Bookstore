@@ -1,0 +1,8 @@
+Examples\CSharpMailExample\.vs\*
+Examples\CSharpMailExample\CSharpMailExample\obj\*
+Examples\CSharpMailExample\CSharpMailExample\bin\Debug\*
+!Examples\CSharpMailExample\CSharpMailExample\bin\Debug\OpenPop.dll
+!Examples\CSharpMailExample\CSharpMailExample\bin\Debug\PlikTXT.txt
+
+Examples\OpenPop.NET 2.0.5\*
+!Examples\OpenPop.NET 2.0.5\binaries\*
