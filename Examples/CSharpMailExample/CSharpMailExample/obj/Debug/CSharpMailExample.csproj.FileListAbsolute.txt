@@ -1,0 +1,16 @@
+C:\Users\piotr\source\repos\CSharpMailExample\CSharpMailExample\bin\Debug\CSharpMailExample.exe.config
+C:\Users\piotr\source\repos\CSharpMailExample\CSharpMailExample\bin\Debug\CSharpMailExample.exe
+C:\Users\piotr\source\repos\CSharpMailExample\CSharpMailExample\bin\Debug\CSharpMailExample.pdb
+C:\Users\piotr\source\repos\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.csprojAssemblyReference.cache
+C:\Users\piotr\source\repos\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.csproj.CoreCompileInputs.cache
+C:\Users\piotr\source\repos\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.exe
+C:\Users\piotr\source\repos\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.pdb
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\bin\Debug\CSharpMailExample.exe.config
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\bin\Debug\CSharpMailExample.exe
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\bin\Debug\CSharpMailExample.pdb
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.csprojAssemblyReference.cache
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.csproj.CoreCompileInputs.cache
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.exe
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.pdb
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\bin\Debug\OpenPop.dll
+C:\Users\piotr\Desktop\Studia\Semestr 7\Projekty\DCproj\DigitalDocuments_Bookstore\Examples\CSharpMailExample\CSharpMailExample\obj\Debug\CSharpMailExample.csproj.CopyComplete
