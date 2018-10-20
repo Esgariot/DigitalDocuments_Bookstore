@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<PurchaseOrder PurchaseOrderNumber="H89Z1" OrderDate="2018-10-13">
+	<Address Type="Shipping">
+		<Name>Jakis Ktos</Name>
+		<Street>Nieznana 12</Street>
+		<City>Duze Miasto</City>
+		<Zip>11111</Zip>
+		<Country>Polska</Country>
+	</Address>
+	<Address Type="Billing">
+		<Name>Jakis Ktos Inny</Name>
+		<Street>Inna 12</Street>
+		<City>Duze Miasto Ale Inne</City>
+		<Zip>11133</Zip>
+		<Country>Polska</Country>
+	</Address>
+	<Items>
+		<Item Id="51512">
+			<ProductName>Harry Potter</ProductName>
+			<Quantity>1</Quantity>
+			<PLNPrice>30</PLNPrice>
+		</Item>	
+		<Item Id="32312">
+			<ProductName>Harry Potter 2</ProductName>
+			<Quantity>4</Quantity>
+			<PLNPrice>31</PLNPrice>
+		</Item>			
+	</Items>
+</PurchaseOrder>
