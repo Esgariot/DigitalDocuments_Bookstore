@@ -14,13 +14,30 @@ using System.IO;
 
 namespace CSharpMailExample
 {
+    enum MailStatus
+    {
+        CLIENT_OFFER,
+        CLIENT_OFFER_REJECTED,
+        CLIENT_OFFER_ACCEPTED,
+        ADDING_PRODUCTS_REQUEST,
+        ADDING_PRODUCTS_RESPONSE,
+        PRODUCTS_LIST_MERGED,
+        PRODUCTS_LIST_ACCEPTED,
+        RESPONSE_TO_CLIENT,
+        RESPONSE_TO_SERVER,
+        RESPONSE_TO_ARCHIVE,
+        TEST
+    }
+
     class Program
     {
         const string mainMailAddress = "ksiegarnia.longinus@gmail.com";
         const string mainMailPassword = "Myszykiszki18";
 
-        public static void SendTestMessage(string emailTargetAdress, string emailBody)
+        public static void SendTestMessage(string emailTargetAdress, string emailBody, MailStatus messeageStatus)
         {
+            MailAddress ownMailAddress = new MailAddress(mainMailAddress);
+
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
             {
                 Credentials = new NetworkCredential(mainMailAddress, mainMailPassword),
@@ -35,6 +52,8 @@ namespace CSharpMailExample
             mail.ReplyToList.Add(replyTo);
 
             mail.Attachments.Add(new Attachment(".\\PlikTXT.txt"));
+
+            mail.Headers["X-LonginusMailStatus"] = messeageStatus.ToString();
 
             try
             {
@@ -71,6 +90,13 @@ namespace CSharpMailExample
                 BinaryStream.Write(attachment.Body);
                 BinaryStream.Close();
             }
+
+            Console.WriteLine("Headers: ");
+            string[] keys = message.Headers.UnknownHeaders.AllKeys;
+            foreach (string key in keys)
+                Console.WriteLine("\t" + key + ": " + message.Headers.UnknownHeaders[key]);
+            //or just simply
+            //Console.WriteLine("\tStatus: " + message.Headers.UnknownHeaders["X-LonginusMailStatus"]);
         }
 
         static void Main(string[] args)
@@ -82,8 +108,11 @@ namespace CSharpMailExample
             Console.WriteLine("Wpisz tresc (i zatwierdz Enterem): ");
             string  emailBody = Console.ReadLine();
 
-            SendTestMessage(emailTargetAdress, emailBody);
-            SendTestMessage("ksiegarnia.longinus@gmail.com", emailBody);
+            MailStatus mailStatus = MailStatus.CLIENT_OFFER;
+
+            if (emailTargetAdress.CompareTo("") == 1)
+                SendTestMessage(emailTargetAdress, emailBody, mailStatus);
+            SendTestMessage("ksiegarnia.longinus@gmail.com", emailBody, mailStatus);
 
             Console.WriteLine("\n Wiadomosc do " + emailTargetAdress +" i " + mainMailAddress + " zostala wyslana! \n" +
                 "Nacisnij klawisz by przejsc do testu odbierania wiadomosci.\n");
