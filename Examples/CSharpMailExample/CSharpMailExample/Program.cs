@@ -76,8 +76,17 @@ namespace CSharpMailExample
             client.Connect("pop.gmail.com", 995, true);
 
             client.Authenticate(mainMailAddress, mainMailPassword);
+
             var count = client.GetMessageCount();
+            //that means get last messeage (a count one)
             Message message = client.GetMessage(count);
+            //  if we want to get all messages, there should be this:
+            /*
+            List<Message> messageList = new List<Message>();
+            for (int i = 0; i < count; i++)
+                messageList.Add(client.GetMessage(i));
+            */
+
             Console.WriteLine("Subject: "+message.Headers.Subject);
             Console.WriteLine("Body:");
             Console.WriteLine(message.MessagePart.MessageParts[0].GetBodyAsText());
