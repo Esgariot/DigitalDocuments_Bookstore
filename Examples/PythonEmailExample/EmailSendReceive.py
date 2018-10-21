@@ -2,7 +2,6 @@ import email
 import smtplib
 import imaplib
 
-# from email.message import EmailMessage
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
