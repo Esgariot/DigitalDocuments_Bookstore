@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\bogda\OneDrive\_Study\SEMESTR VII\Dokumenty Cyfrowe\Projekt\GUI\GUI_Prototype\obj\Debug\
+C:\Users\bogda\OneDrive\_Study\SEMESTR VII\Dokumenty Cyfrowe\Projekt\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\
 GUI_Prototype
 none
 false
 DEBUG;TRACE
-C:\Users\bogda\OneDrive\_Study\SEMESTR VII\Dokumenty Cyfrowe\Projekt\GUI\GUI_Prototype\App.xaml
-16-2019253609
+C:\Users\bogda\OneDrive\_Study\SEMESTR VII\Dokumenty Cyfrowe\Projekt\DigitalDocuments_Bookstore\GUI\GUI_Prototype\App.xaml
+18401757833
 
-6732324345
+8-1972072542
 131569487696
-MainWindow.xaml;ReasonWindow.xaml;Styles\Buttons.xaml;Styles\CheckBoxes.xaml;Styles\Colors.xaml;Styles\ComboBoxes.xaml;Styles\DataGrid.xaml;Styles\Fonts.xaml;Styles\Labels.xaml;Styles\ListViews.xaml;Styles\PasswordBoxes.xaml;Styles\ScrollViewer.xaml;Styles\TabControls.xaml;Styles\TextBlocks.xaml;Styles\TextBoxes.xaml;Styles\Window.xaml;
+LogInWindow.xaml;MainWindow.xaml;ReasonWindow.xaml;Styles\Buttons.xaml;Styles\CheckBoxes.xaml;Styles\Colors.xaml;Styles\ComboBoxes.xaml;Styles\DataGrid.xaml;Styles\Fonts.xaml;Styles\Labels.xaml;Styles\ListViews.xaml;Styles\PasswordBoxes.xaml;Styles\ScrollViewer.xaml;Styles\TabControls.xaml;Styles\TextBlocks.xaml;Styles\TextBoxes.xaml;Styles\Window.xaml;WorkersSelectionWindow.xaml;
 
 False
 

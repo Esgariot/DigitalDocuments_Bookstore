@@ -3,8 +3,8 @@
                     xmlns:local="clr-namespace:GUI_Prototype"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:Double x:Key="ButtonWidth">150</sys:Double>
-    <sys:Double x:Key="ButtonHeight">60</sys:Double>
+    <sys:Double x:Key="ButtonWidth">160</sys:Double>
+    <sys:Double x:Key="ButtonHeight">45</sys:Double>
 
     <Style x:Key="{x:Type Button}" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Width" Value="{StaticResource ButtonWidth}"/>

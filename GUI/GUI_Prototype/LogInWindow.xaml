@@ -1,0 +1,54 @@
+﻿<Window x:Class="GUI_Prototype.LogInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI_Prototype"
+        mc:Ignorable="d"
+        Title="Zaloguj się" Height="400" Width="400"
+        ResizeMode="NoResize"
+        Background="{StaticResource BackgroundPrimaryBrush}"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="E-mail"
+               Grid.Row="0" 
+               Grid.Column="0"
+               />
+        
+        <TextBox x:Name="userNameTextBox" 
+                 Style="{StaticResource TextBoxBottomBorder}" 
+                 Grid.Row="1" 
+                 Grid.Column="0"
+                 />
+        
+        <Label Content="Hasło"
+               Grid.Row="2" 
+               Grid.Column="0"
+               />
+        
+        <PasswordBox x:Name="userPassword" 
+                     Style="{StaticResource CustomPasswordBox}" 
+                     Grid.Row="3" 
+                     Grid.Column="0"
+                     />
+        
+        <Button x:Name="logInButton" 
+                Content="Zaloguj się"
+                Click="logInButton_Click"
+                Grid.Row="4" 
+                Grid.Column="0"
+                />
+    </Grid>
+</Window>
