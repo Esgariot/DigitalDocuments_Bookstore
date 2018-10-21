@@ -30,3 +30,37 @@ C:\Users\bogda\OneDrive\_Study\SEMESTR VII\Dokumenty Cyfrowe\Projekt\GUI\GUI_Pro
 C:\Users\bogda\OneDrive\_Study\SEMESTR VII\Dokumenty Cyfrowe\Projekt\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.csprojAssemblyReference.cache
 C:\Users\bogda\OneDrive\_Study\SEMESTR VII\Dokumenty Cyfrowe\Projekt\GUI\GUI_Prototype\obj\Debug\ReasonWindow.g.cs
 C:\Users\bogda\OneDrive\_Study\SEMESTR VII\Dokumenty Cyfrowe\Projekt\GUI\GUI_Prototype\obj\Debug\ReasonWindow.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\bin\Debug\GUI_Prototype.exe.config
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\bin\Debug\GUI_Prototype.exe
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\bin\Debug\GUI_Prototype.pdb
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\MainWindow.g.cs
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\ReasonWindow.g.cs
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\App.g.cs
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype_MarkupCompile.cache
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype_MarkupCompile.lref
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\App.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\MainWindow.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\ReasonWindow.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\Buttons.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\CheckBoxes.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\Colors.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\ComboBoxes.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\DataGrid.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\Fonts.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\Labels.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\ListViews.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\PasswordBoxes.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\ScrollViewer.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\TabControls.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\TextBlocks.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\TextBoxes.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\Styles\Window.baml
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.g.resources
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.Properties.Resources.resources
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.csproj.GenerateResource.cache
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.csproj.CoreCompileInputs.cache
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.exe
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.pdb
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\bin\Debug\OpenPop.dll
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.csproj.CopyComplete
+C:\Users\ernest\Documents\GitHub\DigitalDocuments_Bookstore\GUI\GUI_Prototype\obj\Debug\GUI_Prototype.csprojAssemblyReference.cache
