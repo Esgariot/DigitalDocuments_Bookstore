@@ -19,6 +19,7 @@ def send_test_message(sender: str, password: str, addressee: str, msg_number='',
     msg['Subject'] = 'Python test message'
     msg['From'] = sender
     msg['To'] = addressee
+    msg['CustomHeader'] = 'test header'
     msg.attach(MIMEText("This is test message " + msg_number))
 
     for file in files:
@@ -48,6 +49,7 @@ def receive_test_message(user_email: str, password: str):
         print("Subject: " + msg['Subject'])
         print("From: " + msg['From'])
         print("To: " + msg['To'])
+        print("Custom header: " + msg['CustomHeader'])
         print(msg.get_payload()[0].get_payload() + '\n')
 
         for part in msg.walk():
