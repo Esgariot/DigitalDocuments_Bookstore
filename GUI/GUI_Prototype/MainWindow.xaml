@@ -32,6 +32,10 @@
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
 
+        <Label x:Name="senderLabel"
+            Grid.Row="0" Grid.Column="0"
+            Style="{StaticResource LabelBorderBottom}"
+            Margin="50 20 0 0"></Label>
         <TabControl Margin="0,0,10,17" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <TabItem Header="Skrzynka" Margin="0,0,-72,0" Width="auto">
                 <ListView Name="MailList" HorizontalAlignment="Left" Height="340" Margin="48,0,0,0" Width="634" SelectionChanged="MailList_SelectionChanged">
@@ -56,6 +60,32 @@
             Content="Nadawca:"
             />
 
+        <Button x:Name="logInButton"
+            Width="100"
+            Grid.Row="0" Grid.Column="2"
+            Margin="15"
+            Content="Zaloguj się"
+            Click="logInButton_Click_1"
+            />
+
+        <Button x:Name="logOutButton"
+            Grid.Row="0" Grid.Column="2"
+            Margin="5 5"
+            Content="Wyloguj się"
+            Click="logOutButton_Click"
+            IsEnabled="False"
+            Visibility="Hidden"
+            />
+
+        <TextBlock x:Name="emailTextBlock"
+            Style="{StaticResource BaseTextBlockStyle}"
+            Grid.Row="1" Grid.ColumnSpan="2"
+            Margin="40 20"
+            Background="White"
+            Foreground="Black"
+            Text="&#x0a;&#x0a;
+            Przykładowy email od klienta"
+            />
                     <TextBlock 
                         Style="{StaticResource BaseTextBlockStyle}"
                         Width="650"
@@ -71,12 +101,11 @@
 
         <StackPanel
             Grid.Row="2" Grid.ColumnSpan="2"
-            Width="650" Height="40"
             Margin="50 0"
             Orientation="Horizontal"
             >
 
-            <Label
+            <Label x:Name="attachmentsLabel"
                 Style="{StaticResource LabelBorderless}"
                 Width="100" Height="40"
                 Content="Załączniki:"
@@ -95,6 +124,14 @@
                     BorderBrush="Black" BorderThickness="0"
                     Background="#222930">
 
+                    <Image x:Name="attachmentImage"
+                        Source="Resources/Icons/pdf_icon.png"
+                        Width="32" Height="32"
+                        Margin="5 0"
+                        MouseDown="attachmentImage_MouseDown"
+                        />
+                    
+                </Border>
                     <Image Source="Resources/Icons/pdf_icon.png"
                            Width="32" Height="32"
                            />
@@ -104,17 +141,18 @@
 
         </StackPanel>
 
-        <Button
+        <Button x:Name="rejectButton"
             Style="{StaticResource FailsBtn}"
             Grid.Row="3" Grid.Column="0"
             Content="Odrzuć"
-            Click="Button_Click"
+            Click="rejectButton_Click"
             />
 
-        <Button
+        <Button x:Name="acceptButton"
             Style="{StaticResource SuccessBtn}"
             Grid.Row="3" Grid.Column="1"
             Content="Zaakceptuj"
+            Click="acceptButton_Click"
             />
 
         <Grid 
@@ -127,39 +165,55 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button
+            <Button x:Name="prepareTemplateButton"
+                IsEnabled="False"
                 Grid.Row="0"
                 Content="Przygotuj szablon"
                 Margin="0 10"
+                Click="prepareTemplateButton_Click"
                 />
 
-            <Button
+            <Button x:Name="confirmTemplateButton"
+                IsEnabled="False"
                 Grid.Row="1"
                 Content="Zatwierdź szablon"
                 Margin="0 10"
+                Click="confirmTemplateButton_Click"
                 />
 
-            <Button
+            <Button x:Name="prepareProductsButton"
                 IsEnabled="False"
                 Grid.Row="2"
                 Content="Dodaj produkty"
                 Margin="0 10"
+                Click="prepareProductsButton_Click"
                 />
 
-            <Button
+            <Button x:Name="confirmProductsButton"
                 IsEnabled="False"
                 Grid.Row="3"
                 Content="Zatwierdź produkty"
                 Margin="0 10"
+                Click="confirmProductsButton_Click"
                 />
 
-            <Button
+            <Button x:Name="approveOrderButton"
                 IsEnabled="False"
                 Grid.Row="4"
+                Content="Potwierdź ofertę"
+                Margin="0 10"
+                Click="approveOrderButton_Click"
+                />
+
+            <Button x:Name="finishOrderButton"
+                IsEnabled="False"
+                Grid.Row="5"
                 Content="Zakończ ofertę"
                 Margin="0 10"
+                Click="finishOrderButton_Click"
                 />
 
         </Grid>

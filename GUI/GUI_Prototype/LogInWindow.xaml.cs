@@ -15,21 +15,16 @@ using System.Windows.Shapes;
 namespace GUI_Prototype
 {
     /// <summary>
-    /// Interaction logic for ReasonWindow.xaml
+    /// Interaction logic for LogInWindow.xaml
     /// </summary>
-    public partial class ReasonWindow : Window
+    public partial class LogInWindow : Window
     {
-        public ReasonWindow()
+        public LogInWindow()
         {
             InitializeComponent();
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void sendButton_Click(object sender, RoutedEventArgs e)
+        private void logInButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -4,6 +4,6 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <sys:Double x:Key="WindowWidth">1000</sys:Double>
-    <sys:Double x:Key="WindowHeight">700</sys:Double>
+    <sys:Double x:Key="WindowHeight">720</sys:Double>
 
 </ResourceDictionary>

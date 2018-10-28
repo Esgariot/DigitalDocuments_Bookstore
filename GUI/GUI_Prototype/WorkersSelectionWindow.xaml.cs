@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace GUI_Prototype
 {
     /// <summary>
-    /// Interaction logic for ReasonWindow.xaml
+    /// Interaction logic for WorkersChooseWindow.xaml
     /// </summary>
-    public partial class ReasonWindow : Window
+    public partial class WorkersChooseWindow : Window
     {
-        public ReasonWindow()
+        public WorkersChooseWindow()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace GUI_Prototype
             this.Close();
         }
 
-        private void sendButton_Click(object sender, RoutedEventArgs e)
+        private void approveButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
