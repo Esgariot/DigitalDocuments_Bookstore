@@ -40,9 +40,11 @@ namespace GUI_Prototype
     {
         public string From { get; set; }
         public MailStatus State { get; set; }
+        public string Subject { get; set; }
         public TypeEnum Type { get; set; }
         public List<Attachment> Attachments { get; set; }
         public string Date { get; set; }//not neccesarily string
+        //public DateTime Date { get; set; }
 
         /*public enum StateEnum
         {
@@ -98,9 +100,10 @@ namespace GUI_Prototype
                 Emails.Add(new Email {
                     From = message.Headers.From.ToString(),
                     State = MailStatusDictionary[applicationHeader],
+                    Subject = message.Headers.Subject,
                     Type = Email.TypeEnum.Offer,
                     Attachments = new List<Attachment>(),
-                    Date = message.Headers.Date });
+                    Date = DateTime.Parse(message.Headers.Date).ToString("dd-MM-yyyy HH:mm:ss") });
 
                 List<MessagePart> attachments = message.FindAllAttachments();
 

@@ -43,8 +43,9 @@
                         <GridView>
                             <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
                             <GridViewColumn Header="From" DisplayMemberBinding="{Binding From}"/>
+                            <GridViewColumn Header="Subject" DisplayMemberBinding="{Binding Subject}"/>
                             <!--<GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>-->
-                            <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"/>
+                            <!--<GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"/>-->
                         </GridView>
                     </ListView.View>
                 </ListView>
