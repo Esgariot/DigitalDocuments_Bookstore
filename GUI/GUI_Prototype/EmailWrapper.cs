@@ -97,13 +97,23 @@ namespace GUI_Prototype
                     applicationHeader = "TEST";
                 }
 
+                string date = "";
+                try
+                {
+                    date = DateTime.Parse(message.Headers.Date).ToString("dd-MM-yyyy HH:mm:ss");
+                }
+                catch
+                {
+                    date = message.Headers.Date;
+                }
+
                 Emails.Add(new Email {
                     From = message.Headers.From.ToString(),
                     State = MailStatusDictionary[applicationHeader],
                     Subject = message.Headers.Subject,
                     Type = Email.TypeEnum.Offer,
                     Attachments = new List<Attachment>(),
-                    Date = DateTime.Parse(message.Headers.Date).ToString("dd-MM-yyyy HH:mm:ss") });
+                    Date = date });
 
                 List<MessagePart> attachments = message.FindAllAttachments();
 
