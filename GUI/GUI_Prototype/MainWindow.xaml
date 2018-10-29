@@ -33,11 +33,44 @@
         </Grid.ColumnDefinitions>
 
         <Label x:Name="senderLabel"
-            Grid.Row="0" Grid.Column="0"
-            Style="{StaticResource LabelBorderBottom}"
-            Margin="50 20 0 0"></Label>
-        <TabControl Margin="0,0,10,17" Grid.ColumnSpan="2" Grid.RowSpan="2">
-            <TabItem Header="Skrzynka" Margin="0,0,-72,0" Width="auto">
+                Grid.Row="0" Grid.Column="1"
+                Style="{StaticResource LabelBorderBottom}"
+                Margin="50 10 0 0"
+                HorizontalAlignment="Left"
+                HorizontalContentAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Nadawca:"
+                />
+
+        <Label x:Name="userLabel"
+                Grid.Row="3" Grid.Column="2"
+                Style="{StaticResource LabelBorderBottom}"
+                Margin="0 0 0 0"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Gość"
+                />
+
+        <Button x:Name="logInButton"
+                        Width="100"
+                        Grid.Row="0" Grid.Column="3"
+                        Margin="15"
+                        Content="Zaloguj się"
+                        Click="LogInButton_Click_1"
+                        />
+
+        <Button x:Name="logOutButton"
+                        Grid.Row="0" Grid.Column="3"
+                        Margin="5 5"
+                        Content="Wyloguj się"
+                        Click="LogOutButton_Click"
+                        IsEnabled="False"
+                        Visibility="Hidden"
+                        />
+
+        <TabControl Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TabItem Header="Skrzynka" Width="200">
                 <ListView Name="MailList" HorizontalAlignment="Left" Height="340" Margin="48,0,0,0" Width="634" SelectionChanged="MailList_SelectionChanged">
                     <ListView.View>
                         <GridView>
@@ -50,52 +83,27 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Header="Wiadomość" Margin="70,0,-142,0" Width="Auto">
-                <Grid HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="100">
-                    <Label Grid.Column="0"
-            Style="{StaticResource LabelBorderBottom}"
-            Width="300" Height="30"
-            Margin="50,31,-250,-21"
-            HorizontalAlignment="Left"
-            HorizontalContentAlignment="Left"
-            Content="Nadawca:"
-            />
+            <TabItem Header="Wiadomość" Width="200">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
 
-        <Button x:Name="logInButton"
-            Width="100"
-            Grid.Row="0" Grid.Column="2"
-            Margin="15"
-            Content="Zaloguj się"
-            Click="logInButton_Click_1"
-            />
-
-        <Button x:Name="logOutButton"
-            Grid.Row="0" Grid.Column="2"
-            Margin="5 5"
-            Content="Wyloguj się"
-            Click="logOutButton_Click"
-            IsEnabled="False"
-            Visibility="Hidden"
-            />
-
-        <TextBlock x:Name="emailTextBlock"
-            Style="{StaticResource BaseTextBlockStyle}"
-            Grid.Row="1" Grid.ColumnSpan="2"
-            Margin="40 20"
-            Background="White"
-            Foreground="Black"
-            Text="&#x0a;&#x0a;
-            Przykładowy email od klienta"
-            />
                     <TextBlock 
-                        Style="{StaticResource BaseTextBlockStyle}"
-                        Width="650"
-                        Margin="48,69,-598,-394"
-                        Background="White"
-                        Foreground="Black"
-            ><InlineUIContainer>
-                            <Label Content="Label"/>
-                        </InlineUIContainer><Run Text="&#xA;&#xA;             Przykładowy email od klienta"/></TextBlock>
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Width="Auto"
+                            Background="White"
+                            Foreground="Black"
+                        >
+                        <InlineUIContainer>
+                            <Label Content="Label" Visibility="Hidden"/>
+                        </InlineUIContainer>
+                        <Run Text="&#xA;&#xA;             Przykładowy email od klienta"/>
+                    </TextBlock>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -146,6 +154,7 @@
             Style="{StaticResource FailsBtn}"
             Grid.Row="3" Grid.Column="0"
             Content="Odrzuć"
+                IsEnabled="False"
             Click="rejectButton_Click"
             />
 
@@ -153,6 +162,7 @@
             Style="{StaticResource SuccessBtn}"
             Grid.Row="3" Grid.Column="1"
             Content="Zaakceptuj"
+                IsEnabled="False"
             Click="acceptButton_Click"
             />
 

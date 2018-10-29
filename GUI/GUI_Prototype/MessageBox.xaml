@@ -1,0 +1,36 @@
+﻿<Window x:Class="GUI_Prototype.MessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI_Prototype"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Title="Dokumenty Cyfrowe" Height="250" Width="350"
+        Background="{StaticResource BackgroundPrimaryBrush}"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <TextBlock 
+                 x:Name="msgText" 
+                 Style="{StaticResource BaseTextBlockStyle}"
+                 Grid.Row="0" Grid.Column="0"
+                 Text="KOMUNIKAT"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"/>
+        </Grid>
+        <Button x:Name="msgButton"
+                Grid.Row="1" Grid.Column="0"
+                Click="MsgButton_Click"
+                Content="OK"/>
+    </Grid>
+</Window>
