@@ -29,7 +29,19 @@ namespace GUI_Prototype
         {
             InitializeComponent();
             
-            MailList.ItemsSource = emailWrapper.Emails;
+            //demonstration purposes only
+            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.ADDING_PRODUCTS_REQUEST });
+            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.ADDING_PRODUCTS_RESPONSE });
+            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "oferta klienta", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER });
+            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "zaakceptowana oferta", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER_ACCEPTED });
+            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER_REJECTED });
+            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "zaakceptowana lista produktów", Type = Email.TypeEnum.Offer, State = MailStatus.PRODUCTS_LIST_ACCEPTED });
+            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.RESPONSE_TO_ARCHIVE });
+            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "połączona lista produktów", Type = Email.TypeEnum.Offer, State = MailStatus.PRODUCTS_LIST_MERGED });
+            ////////////////////////////
+
+            //MailList.ItemsSource = emailWrapper.Emails;
+            MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.CLIENT_OFFER);
         }
 
         private void rejectButton_Click(object sender, RoutedEventArgs e)
@@ -41,6 +53,7 @@ namespace GUI_Prototype
         private void acceptButton_Click(object sender, RoutedEventArgs e)
         {
             prepareTemplateButton.IsEnabled = true;
+            MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.CLIENT_OFFER_ACCEPTED);
         }
 
         private void prepareTemplateButton_Click(object sender, RoutedEventArgs e)
@@ -97,6 +110,9 @@ namespace GUI_Prototype
 
         private void MailList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (MailList.SelectedIndex == -1)
+                return;
+
             AttachmentsPanel.Children.Clear();
             Email selectedEmail = emailWrapper.Emails[MailList.SelectedIndex];
             int attachmentID = -1;

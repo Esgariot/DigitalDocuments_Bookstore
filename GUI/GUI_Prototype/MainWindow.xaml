@@ -38,9 +38,9 @@
             Margin="50 20 0 0"></Label>
         <TabControl Margin="0,0,10,17" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <TabItem Header="Skrzynka" Margin="0,0,-72,0" Width="auto">
-                <ListView Name="MailList" HorizontalAlignment="Left" Height="340" Margin="48,0,0,0" Width="634" SelectionChanged="MailList_SelectionChanged">
+                <ListView Name="MailList" HorizontalAlignment="Left" Height="340" Margin="48,0,0,0" Width="634" SelectionChanged="MailList_SelectionChanged" AutomationProperties.IsColumnHeader="True" OverridesDefaultStyle="False" Style="{DynamicResource BaseStyle}" Foreground="Black" Background="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
                     <ListView.View>
-                        <GridView>
+                        <GridView ColumnHeaderContainerStyle="{DynamicResource {x:Type GridViewColumnHeader}}" ColumnHeaderStringFormat="">
                             <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
                             <GridViewColumn Header="From" DisplayMemberBinding="{Binding From}"/>
                             <GridViewColumn Header="Subject" DisplayMemberBinding="{Binding Subject}"/>
