@@ -7,24 +7,25 @@ orderNumber = ''
 orderDate = ''
 customerFullName = ''
 customerStreet = ''
-customerCity = ''
 customerZip = ''
+customerCity = ''
 customerCountry = ''
 refusalArgumentation = ''
 additionalText = ''
 
 #wczytanie danych do zmiennych
 
-date = input()
-orderNumber = input()
-orderDate = input()
-customerFullName = input()
-customerStreet = input()
-customerCity = input()
-customerZip = input()
-customerCountry = input()
-refusalArgumentation = input()
-additionalText = input()
+date = input("Enter today's date: ")
+orderNumber = input('Enter the order number: ')
+orderDate = input('Enter the date of the order: ')
+print("Enter the customer's address data:")
+customerFullName = input("Name and surname: ")
+customerStreet = input("Street and number of house: ")
+customerZip = input("Zip code: ")
+customerCity = input("City: ")
+customerCountry = input("Country: ")
+refusalArgumentation = input("Write the reason of the rejection: ")
+additionalText = input("Write more information or leave it empty: ")
 
 #tworzenie PDFa
 
