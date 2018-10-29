@@ -33,14 +33,33 @@
         </Grid.ColumnDefinitions>
 
         <Label x:Name="senderLabel"
-                Grid.Row="0" Grid.Column="1"
-                Style="{StaticResource LabelBorderBottom}"
-                Margin="50 10 0 0"
-                HorizontalAlignment="Left"
-                HorizontalContentAlignment="Left"
-                VerticalAlignment="Top"
-                Content="Nadawca:"
-                />
+            Grid.Row="0" Grid.Column="0"
+            Style="{StaticResource LabelBorderBottom}"
+            Margin="50 20 0 0"></Label>
+        <TabControl Margin="0,0,10,17" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TabItem Header="Skrzynka" Margin="0,0,-72,0" Width="auto">
+                <ListView Name="MailList" HorizontalAlignment="Left" Height="340" Margin="48,0,0,0" Width="634" SelectionChanged="MailList_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
+                            <GridViewColumn Header="From" DisplayMemberBinding="{Binding From}"/>
+                            <GridViewColumn Header="Subject" DisplayMemberBinding="{Binding Subject}"/>
+                            <!--<GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>-->
+                            <!--<GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"/>-->
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Wiadomość" Margin="70,0,-142,0" Width="Auto">
+                <Grid HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="100">
+                    <Label Grid.Column="0"
+            Style="{StaticResource LabelBorderBottom}"
+            Width="300" Height="30"
+            Margin="50,31,-250,-21"
+            HorizontalAlignment="Left"
+            HorizontalContentAlignment="Left"
+            Content="Nadawca:"
+            />
 
         <Label x:Name="userLabel"
                 Grid.Row="3" Grid.Column="2"

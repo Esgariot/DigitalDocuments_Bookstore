@@ -11,6 +11,7 @@ using OpenPop.Pop3;
 using OpenPop.Mime;
 
 using System.IO;
+using System.ComponentModel;
 
 namespace GUI_Prototype
 {
@@ -63,7 +64,7 @@ namespace GUI_Prototype
         const string mainMailAddress = "ksiegarnia.longinus@gmail.com";
         const string mainMailPassword = "Myszykiszki18";
         List<Message> messages;
-        public List<Email> Emails { get; set; }
+        public BindingList<Email> Emails { get; set; }
         //maybe not neccesary at all
         Dictionary<string, MailStatus> MailStatusDictionary = new Dictionary<string, MailStatus>
         {
@@ -83,7 +84,7 @@ namespace GUI_Prototype
         public EmailWrapper()
         {
             messages = ReceiveAllMessages();
-            Emails = new List<Email>();
+            Emails = new BindingList<Email>();
 
             foreach(Message message in messages)
             {
@@ -91,10 +92,10 @@ namespace GUI_Prototype
 
                 if(applicationHeader == null || applicationHeader.Length == 0)
                 {
-                    //continue;
+                    continue;
 
                     //debug
-                    applicationHeader = "TEST";
+                    //applicationHeader = "TEST";
                 }
 
                 string date = "";
@@ -125,6 +126,13 @@ namespace GUI_Prototype
                         Extension = attachment.FileName.Split('.').Last() });
                 }
             }
+        }
+
+        //if there was an application-wide variable indicating step in the process, we could
+        //ditch this function and limit the bindinglist instead
+        public BindingList<Email> EmailsWithStatus(MailStatus status)
+        {
+            return new BindingList<Email>(Emails.Where(e => e.State == status).ToList());
         }
 
         public static List<Message> ReceiveAllMessages()
