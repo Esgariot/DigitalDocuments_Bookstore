@@ -34,25 +34,25 @@
         <CheckBox x:Name="department_1_Checkbox"
                   Width="100" Height="20"
             Grid.Row="1" Grid.Column="0"
-            Content="Dział nr 1"
+            Content="Dział nr 1" Click="department_1_Checkbox_Click"
             />
 
         <CheckBox x:Name="department_2_Checkbox"
                   Width="100" Height="20"
             Grid.Row="2" Grid.Column="0"
-            Content="Dział nr 2"
+            Content="Dział nr 2" Click="department_2_Checkbox_Click"
             />
 
         <CheckBox x:Name="department_3_Checkbox"
                   Width="100" Height="20"
             Grid.Row="1" Grid.Column="1"
-            Content="Dział nr 3"
+            Content="Dział nr 3" Click="department_3_Checkbox_Click"
             />
 
         <CheckBox x:Name="department_4_Checkbox"
                   Width="100" Height="20"
             Grid.Row="2" Grid.Column="1"
-            Content="Dział nr 4"
+            Content="Dział nr 4" Click="department_4_Checkbox_Click"
             />
 
         <Button x:Name="backButton"
@@ -66,7 +66,7 @@
                 Style="{StaticResource SuccessBtn}"
                 Grid.Row="3" Grid.Column="1"
                 Content="Zatwierdź"
-                Click="approveButton_Click"
+                Click="approveButton_Click" IsEnabled="False"
                 />
         
     </Grid>
