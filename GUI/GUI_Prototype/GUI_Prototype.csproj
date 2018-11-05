@@ -38,6 +38,10 @@
     <Reference Include="CSharpEmailLibrary">
       <HintPath>..\Tools\CSharpEmailLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="OpenPop">
       <HintPath>..\Tools\OpenPop.dll</HintPath>
     </Reference>
@@ -61,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExcelManager.cs" />
     <Compile Include="LogInWindow.xaml.cs">
       <DependentUpon>LogInWindow.xaml</DependentUpon>
     </Compile>
@@ -71,6 +76,7 @@
     <Compile Include="ReasonWindow.xaml.cs">
       <DependentUpon>ReasonWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Role.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WorkersSelectionWindow.xaml.cs">
       <DependentUpon>WorkersSelectionWindow.xaml</DependentUpon>
@@ -178,6 +184,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

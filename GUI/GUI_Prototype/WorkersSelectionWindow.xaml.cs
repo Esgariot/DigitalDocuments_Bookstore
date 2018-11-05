@@ -21,17 +21,12 @@ namespace GUI_Prototype
     /// </summary>
     public partial class WorkersChooseWindow : Window
     {
-        List<string> workerMailAddresses = new List<string>()
-        {
-            "ks.longinus.dzial1@gmail.com",
-            "ks.longinus.dzial2@gmail.com",
-            "ks.longinus.dzial3@gmail.com",
-            "ks.longinus.dzial4@gmail.com",
-        };
+        List<string> workerMailAddresses;
 
         public WorkersChooseWindow()
         {
             InitializeComponent();
+            workerMailAddresses = Utils.getWorkersEmails();
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)

@@ -48,6 +48,9 @@ namespace GUI_Prototype
 
             acceptButton.IsEnabled = false;
             rejectButton.IsEnabled = false;
+
+            Utils.CreateDirectory(Utils.rootPath, Utils.usersDirName);
+            Utils.CreateDirectory(Utils.rootPath, Utils.excelDirName);
         }
 
         private void rejectButton_Click(object sender, RoutedEventArgs e)

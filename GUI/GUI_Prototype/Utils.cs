@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace GUI_Prototype
 {
@@ -9,6 +11,9 @@ namespace GUI_Prototype
         public static string rootPath = @"./";
         public static string usersDirName = @"users";
         public static string usersDirPath = System.IO.Path.Combine(rootPath, usersDirName);
+        public static string excelDirName = @"excel";
+        public static string excelFileName = @"doc.xlsx";
+        public static string excelDirPath = System.IO.Path.Combine(rootPath, excelDirName);
 
         public static bool CAN_ACCEPT_ORDER = false;
         public static bool CAN_REJECT_ORDER = false;
@@ -18,6 +23,32 @@ namespace GUI_Prototype
         public static bool CAN_CONFIRM_PRODUCTS = false;
         public static bool CAN_CONFIRM_ORDER = false;
         public static bool CAN_FINISH_ORDER = false;
+
+        internal static List<string> getWorkersEmails()
+        {
+            List<string> res = new List<string>();
+            if (Directory.Exists(usersDirPath))
+            {
+                string[] dirs = Directory.GetDirectories(usersDirName);
+                foreach (string directory in dirs)
+                {
+                    string[] files = Directory.GetFiles(directory);
+                    foreach (string file in files)
+                    {
+                        using (StreamReader reader = new StreamReader(file))
+                        {
+                            string email = reader.ReadLine();
+                            string pass = reader.ReadLine();
+                            string role = reader.ReadLine();
+
+                            if (role.Equals(Role.DEPARTMENT_EMPLOYEE))
+                                res.Add(email);
+                        }
+                    }
+                }
+            }
+            return res;
+        }
 
         public static bool CreateDirectory(string path, string directoryName)
         {
