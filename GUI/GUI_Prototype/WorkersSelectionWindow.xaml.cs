@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using System.Net;
-using System.Net.Mail;
+using CSharpEmailLibrary;
 
 namespace GUI_Prototype
 {
@@ -22,24 +21,6 @@ namespace GUI_Prototype
     /// </summary>
     public partial class WorkersChooseWindow : Window
     {
-        enum MailStatus
-        {
-            CLIENT_OFFER,
-            CLIENT_OFFER_REJECTED,
-            CLIENT_OFFER_ACCEPTED,
-            ADDING_PRODUCTS_REQUEST,
-            ADDING_PRODUCTS_RESPONSE,
-            PRODUCTS_LIST_MERGED,
-            PRODUCTS_LIST_ACCEPTED,
-            RESPONSE_TO_CLIENT,
-            RESPONSE_TO_SERVER,
-            RESPONSE_TO_ARCHIVE,
-            TEST
-        }
-
-        const string mainMailAddress = "ksiegarnia.longinus@gmail.com";
-        const string mainMailPassword = "Myszykiszki18";
-
         List<string> workerMailAddresses = new List<string>()
         {
             "ks.longinus.dzial1@gmail.com",
@@ -74,38 +55,17 @@ namespace GUI_Prototype
 
         private void sendWorkerRequestMessage(string workerMailAddress)
         {
-            MailAddress ownMailAddress = new MailAddress(mainMailAddress);
+            Mail mail = new Mail(CSharpEmailLibrary.MailsCredentials.mainMailAddress, workerMailAddress);
+            mail.SetSubject("Ksiegarnia Longinus. Dodawanie produktu.");
+            mail.SetBody("Prosze wypelnic zalaczony plik produktami z Pani/Pana dzialu. \n");
+            mail.SetReplyTo(CSharpEmailLibrary.MailsCredentials.mainMailAddress);
+            //mail.AddAttachment(".\\PlikTXT.txt");
+            mail.SetHeader(CSharpEmailLibrary.MailsCredentials.mainMailStatusHeaderKey, 
+                MailStatus.ADDING_PRODUCTS_REQUEST.ToString());
 
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
-            {
-                Credentials = new NetworkCredential(mainMailAddress, mainMailPassword),
-                EnableSsl = true
-            };
-
-            MailMessage mail = new MailMessage(mainMailAddress, workerMailAddress);
-            mail.Subject = "Ksiegarnia Longinus. Dodawanie produktu.";
-            mail.Body = "Prosze wypelnic zalaczony plik produktami z Pani/Pana dzialu. \n";
-
-            MailAddress replyTo = new MailAddress("ksiegarnia.longinus@gmail.com");
-            mail.ReplyToList.Add(replyTo);
-
-            //mail.Attachments.Add(new Attachment(".\\PlikTXT.txt"));
-
-            mail.Headers["X-LonginusMailStatus"] = MailStatus.ADDING_PRODUCTS_REQUEST.ToString();
-
-            try
-            {
-                client.Send(mail);
-            }
-            catch (SmtpException ex)
-            {
-                throw new ApplicationException
-                  ("SmtpException has occured: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            MailSender ms = new MailSender(CSharpEmailLibrary.MailsCredentials.mainMailAddress,
+                CSharpEmailLibrary.MailsCredentials.mainMailPassword);
+            ms.SendMail(mail);
         }
 
         private void approveButtonEnabling()
