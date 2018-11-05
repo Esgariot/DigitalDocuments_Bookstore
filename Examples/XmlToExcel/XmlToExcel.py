@@ -39,7 +39,7 @@ def xml_to_excel(file_path: str, csv_file: str):
 
         # Getting shipping and billing addresses
         writer.writerow(['Addresses'])
-        writer.writerow(['Type', 'Name', 'Street', 'City', 'Zip'])
+        writer.writerow(['Type', 'Name', 'Street', 'City', 'Zip', 'Country'])
         for address in root.findall('Address'):
             write_address(address, writer)
         writer.writerow([])
@@ -49,6 +49,8 @@ def xml_to_excel(file_path: str, csv_file: str):
         writer.writerow(['Id', 'Name', 'Quantity', 'Price'])
         for item in root.find('Items').findall('Item'):
             write_item(item, writer)
+
+        writer.writerow([])
 
 
 def main():
