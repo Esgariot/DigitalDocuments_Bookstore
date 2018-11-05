@@ -91,7 +91,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
 
                     <TextBlock 
                             Style="{StaticResource BaseTextBlockStyle}"
@@ -99,10 +98,13 @@
                             Background="White"
                             Foreground="Black"
                         >
+                        
                         <InlineUIContainer>
                             <Label Content="Label" Visibility="Hidden"/>
                         </InlineUIContainer>
+                        
                         <Run Text="&#xA;&#xA;             Przykładowy email od klienta"/>
+                        
                     </TextBlock>
                 </Grid>
             </TabItem>
