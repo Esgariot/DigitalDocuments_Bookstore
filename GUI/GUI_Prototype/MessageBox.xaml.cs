@@ -19,23 +19,63 @@ namespace GUI_Prototype
     /// </summary>
     public partial class MessageBox : Window
     {
-        private MainWindow mW;
+        private const string MB_OK = "MB_OK";
+        private const string MB_YESNO = "MB_YESNO";
 
         public MessageBox(string message)
         {
             InitializeComponent();
+
+            yesButton.Visibility = Visibility.Hidden;
+            noButton.Visibility = Visibility.Hidden;
+            okButton.Visibility = Visibility.Visible;
+
             msgText.Text = string.Format(message);
         }
 
-        public MessageBox(string message, MainWindow mW)
+        public MessageBox(string message, string type)
         {
             InitializeComponent();
+            
+            PrepareButtons(type);
+
             msgText.Text = string.Format(message);
-            this.mW = mW;
         }
 
-        private void MsgButton_Click(object sender, RoutedEventArgs e)
+        private void PrepareButtons(string type)
         {
+            switch (type)
+            {
+                case MB_OK:
+                    yesButton.Visibility = Visibility.Hidden;
+                    noButton.Visibility = Visibility.Hidden;
+                    okButton.Visibility = Visibility.Visible;
+                    break;
+
+                case MB_YESNO:
+                    yesButton.Visibility = Visibility.Visible;
+                    noButton.Visibility = Visibility.Visible;
+                    okButton.Visibility = Visibility.Hidden;
+                    break;
+            }
+        }
+
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            return;
+        }
+
+        private void noButton_Click(object sender, RoutedEventArgs e)
+        {
+            Utils.MSGBOX_RESPONSE = false;
+            this.Close();
+            return;
+        }
+
+        private void yesButton_Click(object sender, RoutedEventArgs e)
+        {
+            Utils.MSGBOX_RESPONSE = true;
             this.Close();
             return;
         }

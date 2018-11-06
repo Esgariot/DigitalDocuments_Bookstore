@@ -31,7 +31,7 @@ namespace GUI_Prototype
         public MainWindow()
         {
             InitializeComponent();
-            
+
             //demonstration purposes only
             emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.ADDING_PRODUCTS_REQUEST });
             emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.ADDING_PRODUCTS_RESPONSE });
@@ -67,35 +67,65 @@ namespace GUI_Prototype
 
         private void prepareTemplateButton_Click(object sender, RoutedEventArgs e)
         {
-            WorkersChooseWindow workersChooseWindow = new WorkersChooseWindow();
-            workersChooseWindow.Show();
-
+            //ExcelManager.openfile();
             confirmTemplateButton.IsEnabled = true;
         }
 
         private void confirmTemplateButton_Click(object sender, RoutedEventArgs e)
         {
-            prepareProductsButton.IsEnabled = true;
+            WorkersChooseWindow workersChooseWindow = new WorkersChooseWindow();
+            workersChooseWindow.Show();
+            //prepareProductsButton.IsEnabled = true;
         }
 
         private void prepareProductsButton_Click(object sender, RoutedEventArgs e)
         {
+            //ExcelManager.openfile();
             confirmProductsButton.IsEnabled = true;
         }
 
         private void confirmProductsButton_Click(object sender, RoutedEventArgs e)
         {
-            approveOrderButton.IsEnabled = true;
+            MessageBox confirmProductsMsgBox = new MessageBox("Czy na pewno chcesz potwierdzić produkty?", "MB_YESNO");
+            confirmProductsMsgBox.Show();
+            confirmProductsMsgBox.Closing += confirmProductsMsgBox_Closing;
+        }
+
+        private void confirmProductsMsgBox_Closing(object sender, CancelEventArgs e)
+        {
+            if (Utils.MSGBOX_RESPONSE)
+            {
+                //approveOrderButton.IsEnabled = true;
+            }
+            else
+            {
+
+            }
         }
 
         private void approveOrderButton_Click(object sender, RoutedEventArgs e)
         {
+            //ExcelManager.openfile();
             finishOrderButton.IsEnabled = true;
         }
 
         private void finishOrderButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox finishOrderMsgBox = new MessageBox("Czy na pewno chcesz zakończyć zamówienie?", "MB_YESNO");
+            finishOrderMsgBox.Show();
+            finishOrderMsgBox.Closing += finishOrderMsgBox_Closing;
+        }
 
+        private void finishOrderMsgBox_Closing(object sender, CancelEventArgs e)
+        {
+            if (Utils.MSGBOX_RESPONSE)
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         private void attachmentImage_MouseDown(object sender, MouseButtonEventArgs e)
@@ -133,6 +163,7 @@ namespace GUI_Prototype
             Utils.loggedRole = null;
             isLogged = false;
             UnloadRoles();
+            BlockGUI();
             userLabel.Content = "Gość";
             logOutButton.IsEnabled = false;
             logOutButton.Visibility = Visibility.Hidden;
@@ -164,6 +195,8 @@ namespace GUI_Prototype
 
         private void PrepareGUI()
         {
+            BlockGUI();
+
             switch (Utils.loggedRole)
             {
                 case "GUEST":
@@ -175,8 +208,22 @@ namespace GUI_Prototype
                 case "DEPARTMENT_EMPLOYEE":
                     acceptButton.IsEnabled = false;
                     rejectButton.IsEnabled = false;
+                    prepareProductsButton.IsEnabled = true;
+                    //confirmProductsButton.IsEnabled = true;
                     break;
             }
+        }
+
+        private void BlockGUI()
+        {
+            acceptButton.IsEnabled = false;
+            rejectButton.IsEnabled = false;
+            prepareTemplateButton.IsEnabled = false;
+            confirmTemplateButton.IsEnabled = false;
+            prepareProductsButton.IsEnabled = false;
+            confirmProductsButton.IsEnabled = false;
+            approveOrderButton.IsEnabled = false;
+            finishOrderButton.IsEnabled = false;
         }
 
         private void UnloadRoles()

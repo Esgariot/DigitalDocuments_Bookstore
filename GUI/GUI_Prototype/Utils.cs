@@ -12,7 +12,7 @@ namespace GUI_Prototype
         public static string usersDirName = @"users";
         public static string usersDirPath = System.IO.Path.Combine(rootPath, usersDirName);
         public static string excelDirName = @"excel";
-        public static string excelFileName = @"doc.xlsx";
+        public static string excelFileName = @"doc.xls";
         public static string excelDirPath = System.IO.Path.Combine(rootPath, excelDirName);
 
         public static bool CAN_ACCEPT_ORDER = false;
@@ -23,6 +23,8 @@ namespace GUI_Prototype
         public static bool CAN_CONFIRM_PRODUCTS = false;
         public static bool CAN_CONFIRM_ORDER = false;
         public static bool CAN_FINISH_ORDER = false;
+
+        public static bool MSGBOX_RESPONSE = false;
 
         internal static List<string> getWorkersEmails()
         {
@@ -47,6 +49,7 @@ namespace GUI_Prototype
                     }
                 }
             }
+            res.Sort();
             return res;
         }
 

@@ -4,9 +4,9 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace GUI_Prototype
 {
-    class ExcelManager
+    public class ExcelManager
     {
-        static void openfile()
+        public static void openfile()
         {
             string mySheet = Path.Combine(Utils.excelDirPath, Utils.excelFileName); //@"C:\Users\Tomasz\Desktop\studia\DC\dok1.xlsx";
             var excelApp = new Excel.Application();
@@ -16,7 +16,8 @@ namespace GUI_Prototype
 
             Excel.Workbook sheet = books.Open(mySheet);
         }
-        static void MergeExcels()
+
+        public static void MergeExcels()
         {
             Excel.Application app = new Excel.Application();
             app.Visible = true;
@@ -32,10 +33,10 @@ namespace GUI_Prototype
                 }
             }
         }
-        static void Main(string[] args)
-        {
-            //openfile();
-            MergeExcels();
-        }
+        //static void Main(string[] args)
+        //{
+        //    //openfile();
+        //    MergeExcels();
+        //}
     }
 }

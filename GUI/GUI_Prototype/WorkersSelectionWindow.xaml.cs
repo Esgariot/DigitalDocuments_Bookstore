@@ -54,7 +54,7 @@ namespace GUI_Prototype
             mail.SetSubject("Ksiegarnia Longinus. Dodawanie produktu.");
             mail.SetBody("Prosze wypelnic zalaczony plik produktami z Pani/Pana dzialu. \n");
             mail.SetReplyTo(CSharpEmailLibrary.MailsCredentials.mainMailAddress);
-            //mail.AddAttachment(".\\PlikTXT.txt");
+            mail.AddAttachment(System.IO.Path.Combine(Utils.excelDirPath, Utils.excelFileName));
             mail.SetHeader(CSharpEmailLibrary.MailsCredentials.mainMailStatusHeaderKey, 
                 MailStatus.ADDING_PRODUCTS_REQUEST.ToString());
 
