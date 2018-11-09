@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSharpEmailLibrary">
+      <HintPath>..\Tools\CSharpEmailLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="OpenPop">
       <HintPath>..\Tools\OpenPop.dll</HintPath>
     </Reference>
