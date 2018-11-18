@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GUI_Prototype">
+
+    <Color x:Key="BackgroundPrimary">#3D4854</Color>
+    <SolidColorBrush x:Key="BackgroundPrimaryBrush" Color="{StaticResource BackgroundPrimary}"/>
+
+    <Color x:Key="LightBackgroundPrimary">#626A74</Color>
+    <SolidColorBrush x:Key="LightBackgroundPrimaryBrush" Color="{StaticResource LightBackgroundPrimary}"/>
+
+    <Color x:Key="White">#ffffff</Color>
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
+
+    <Color x:Key="Black">#000000</Color>
+    <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
+
+    <Color x:Key="LightGray">#A0A0A0</Color>
+    <SolidColorBrush x:Key="LightGrayBrush" Color="{StaticResource LightGray}"/>
+
+    <Color x:Key="DarkGray">#4F4F4F</Color>
+    <SolidColorBrush x:Key="DarkGrayBrush" Color="{StaticResource DarkGray}"/>
+
+    <Color x:Key="Green">#34be5b</Color>
+    <SolidColorBrush x:Key="GreenBrush" Color="{StaticResource Green}"/>
+
+    <Color x:Key="SuccessGreen">#169600</Color>
+    <SolidColorBrush x:Key="SuccessGreenBrush" Color="{StaticResource SuccessGreen}"/>
+
+    <Color x:Key="FailRed">#e50000</Color>
+    <SolidColorBrush x:Key="FailRedBrush" Color="{StaticResource FailRed}"/>
+
+    <Color x:Key="DarkGreen">#227D3C</Color>
+    <SolidColorBrush x:Key="DarkGreenBrush" Color="{StaticResource DarkGreen}"/>
+</ResourceDictionary>
