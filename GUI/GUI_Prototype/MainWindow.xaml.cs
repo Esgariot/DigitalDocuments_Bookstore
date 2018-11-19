@@ -124,8 +124,10 @@ namespace GUI_Prototype
             }
             else
             {
-
+                
             }
+
+            ArchiviseCurrentTransaction();
         }
 
         private void attachmentImage_MouseDown(object sender, MouseButtonEventArgs e)
@@ -285,6 +287,34 @@ namespace GUI_Prototype
                 BinaryStream.Close();
             }
             System.Diagnostics.Process.Start(filePath);
+        }
+
+        private void ArchiviseCurrentTransaction()
+        {
+            //Nie pojęcia jak wskazać:
+            //  *   plikow xml i xpdl do archiwizowania
+            //  *   danych klienta
+            //  *   numeru transakcji
+
+            string pathToDatabaseFolder = @".\Archive\";
+			if (System.IO.Directory.Exists(pathToDatabaseFolder))
+				System.IO.Directory.CreateDirectory(pathToDatabaseFolder);
+            string pathToFilesFolder = @"..\..\..\Tools\";
+
+            FileStream xmlFile = File.Open(pathToFilesFolder + "PurchaseOrderTemplate.xml",
+                System.IO.FileMode.Open);
+
+            FileStream xpdlFile = File.Open(pathToFilesFolder + "XPDL.txt",
+                System.IO.FileMode.Open);
+
+            CustomerEntity customer = new CustomerEntity();
+            customer.name = "";
+            customer.mailAddress = "";
+
+            string transactionId = "JPA8296_30742581";
+
+            Archive archive = new Archive(pathToDatabaseFolder);
+            archive.ArchiviseTransaction(transactionId, customer, xmlFile, xpdlFile);
         }
     }
 }
