@@ -1,0 +1,11 @@
+C:\Users\Tomasz\source\repos\DCproj\DCproj\bin\Debug\DCproj.exe.config
+C:\Users\Tomasz\source\repos\DCproj\DCproj\bin\Debug\DCproj.exe
+C:\Users\Tomasz\source\repos\DCproj\DCproj\bin\Debug\DCproj.pdb
+C:\Users\Tomasz\source\repos\DCproj\DCproj\obj\Debug\DCproj.csprojAssemblyReference.cache
+C:\Users\Tomasz\source\repos\DCproj\DCproj\obj\Debug\DCproj.csproj.ResolveComReference.cache
+C:\Users\Tomasz\source\repos\DCproj\DCproj\obj\Debug\DCproj.Properties.Resources.resources
+C:\Users\Tomasz\source\repos\DCproj\DCproj\obj\Debug\DCproj.csproj.GenerateResource.cache
+C:\Users\Tomasz\source\repos\DCproj\DCproj\obj\Debug\DCproj.csproj.CoreCompileInputs.cache
+C:\Users\Tomasz\source\repos\DCproj\DCproj\obj\Debug\DCproj.exe
+C:\Users\Tomasz\source\repos\DCproj\DCproj\obj\Debug\DCproj.pdb
+C:\Users\Tomasz\source\repos\DCproj\DCproj\obj\Debug\DCproj.Form1.resources
