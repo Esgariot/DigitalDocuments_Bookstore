@@ -45,6 +45,7 @@ namespace GUI_Prototype
         public TypeEnum Type { get; set; }
         public List<Attachment> Attachments { get; set; }
         public string Date { get; set; }//not neccesarily string
+        public string Status { get; set; }
         //public DateTime Date { get; set; }
 
         /*public enum StateEnum
@@ -86,6 +87,8 @@ namespace GUI_Prototype
             messages = ReceiveAllMessages();
             Emails = new BindingList<Email>();
 
+            XPDLManager xPDL = new XPDLManager("..\\..\\..\\..\\Examples\\XPDLReader\\xpdl.xml");
+
             foreach(Message message in messages)
             {
                 string applicationHeader = message.Headers.UnknownHeaders["X-LonginusMailStatus"];
@@ -114,7 +117,8 @@ namespace GUI_Prototype
                     Subject = message.Headers.Subject,
                     Type = Email.TypeEnum.Offer,
                     Attachments = new List<Attachment>(),
-                    Date = date });
+                    Date = date,
+                    Status = xPDL.GetNext(applicationHeader)[0]});
 
                 List<MessagePart> attachments = message.FindAllAttachments();
 
