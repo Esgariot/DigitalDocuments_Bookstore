@@ -18,6 +18,7 @@ namespace XPDLReader
             Console.WriteLine(next[0]);
 
             xpdl.SetCurrentActivity("RESPONSE_TO_ARCHIVE");
+            xpdl.SetCurrentActivity("RESPONSE_TO_SERVER");
 
             Console.WriteLine(xpdl.GetPreviousActivity());
             next = xpdl.GetNext();

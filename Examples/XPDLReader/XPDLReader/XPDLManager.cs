@@ -16,6 +16,7 @@ namespace XPDLReader
         IEnumerable<XElement> activities;
         IEnumerable<XElement> transitions;
         string currentId;
+        string path;
 
         public XPDLManager(string pathToXPDL)
         {
@@ -24,9 +25,10 @@ namespace XPDLReader
             activities = doc.Root.Elements(content + "WorkflowProcesses").Elements(content + "WorkflowProcess").Elements(content + "Activities").Elements(content + "Activity");
             transitions = doc.Root.Elements(content + "WorkflowProcesses").Elements(content + "WorkflowProcess").Elements(content + "Transitions").Elements(content + "Transition");
             currentId = null;
+            path = pathToXPDL;
         }
 
-        /* pobierz ID pierwszej aktywnosci zawartej w xpdlu */
+        /* pobierz ID pierwszej aktywnosci zawartej w xpdlu*/
         public string GetFirstActivity()
         {
             XElement first = activities.First<XElement>();
@@ -93,10 +95,13 @@ namespace XPDLReader
             return null;
         }
 
-        /* zapamietaj ID biezacej aktywnosci */
+        /* zapamietaj ID biezacej aktywnosci oraz ustaw date zakonczenia starej aktywnosci i rozpoczecia nowej aktywnosci */
         public void SetCurrentActivity(string activityId)
         {
+            if(currentId != null)
+                SetFinishDate(currentId);
             currentId = activityId;
+            SetStartDate(currentId);
         }
 
         /* pobierz ID biezacej aktywnosci */
@@ -116,6 +121,92 @@ namespace XPDLReader
             }
 
             return null;
+        }
+
+        /*dodaj atrybut z data rozpoczecia wykonywania aktywnosci o podanym ID*/
+        public void SetStartDate(string activityId)
+        {
+            DateTime date = DateTime.Now;
+            string text = "\t\t\t\t\t\t<xpdl:ExtendedAttribute Name=\"InputDate\" Value=\"" + date + "\"/>";
+            List<string> contentXPDL = new List<string>();
+            bool isAdded = false;
+
+            using(StreamReader streamReader = File.OpenText(path))
+            {
+                do
+                {
+                    string line = streamReader.ReadLine();
+                    contentXPDL.Add(line);
+
+                    if(line.Contains("<xpdl:Activity Id=\"" + activityId))
+                    {
+                        do
+                        {
+                            line = streamReader.ReadLine();
+                            contentXPDL.Add(line);
+
+                        }while(!line.Contains("<xpdl:ExtendedAttributes>"));
+                        
+                        if (line.Contains("<xpdl:ExtendedAttributes>") && !isAdded)
+                        {
+                                contentXPDL.Add(text);
+                                isAdded = true;
+                        }
+                    }
+
+                }while(!streamReader.EndOfStream);
+            }
+
+            using (StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.Create)))
+            {
+                foreach(string line in contentXPDL)
+                    streamWriter.WriteLine(line);
+            }
+
+            doc = XDocument.Load(path); 
+        }
+
+        /*dodaj atrybut z data zakonczenia wykonywania aktywnosci o zadanym ID*/
+        public void SetFinishDate(string activityId)
+        {
+            DateTime date = DateTime.Now;
+            string text = "\t\t\t\t\t\t<xpdl:ExtendedAttribute Name=\"OutputDate\" Value=\"" + date + "\"/>";  
+            List<string> contentXPDL = new List<string>();
+            bool isAdded = false;
+
+            using(StreamReader streamReader = File.OpenText(path))
+            {
+                do
+                {
+                    string line = streamReader.ReadLine();
+                    contentXPDL.Add(line);
+
+                    if(line.Contains("<xpdl:Activity Id=\"" + activityId))
+                    {
+                        do
+                        {
+                            line = streamReader.ReadLine();
+                            contentXPDL.Add(line);
+
+                        }while(!line.Contains("<xpdl:ExtendedAttributes>"));
+                        
+                        if (line.Contains("<xpdl:ExtendedAttributes>") && !isAdded)
+                        {
+                                contentXPDL.Add(text);
+                                isAdded = true;
+                        }
+                    }
+
+                }while(!streamReader.EndOfStream);
+            }
+
+            using (StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.Create)))
+            {
+                foreach(string line in contentXPDL)
+                    streamWriter.WriteLine(line);
+            }
+
+            doc = XDocument.Load(path);             
         }
     }
 }
