@@ -53,6 +53,58 @@ namespace GUI_Prototype
             return res;
         }
 
+        internal static List<string> getEmailsByRole(Role role)
+        {
+            List<string> res = new List<string>();
+            if (Directory.Exists(usersDirPath))
+            {
+                string[] dirs = Directory.GetDirectories(usersDirName);
+                foreach (string directory in dirs)
+                {
+                    string[] files = Directory.GetFiles(directory);
+                    foreach (string file in files)
+                    {
+                        using (StreamReader reader = new StreamReader(file))
+                        {
+                            string fileEmail = reader.ReadLine();
+                            string filePass = reader.ReadLine();
+                            string fileRole = reader.ReadLine();
+
+                            if (fileRole.Equals(role))
+                                res.Add(fileEmail);
+                        }
+                    }
+                }
+            }
+            res.Sort();
+            return res;
+        }
+
+        internal static List<string> getAllEmails()
+        {
+            List<string> res = new List<string>();
+            if (Directory.Exists(usersDirPath))
+            {
+                string[] dirs = Directory.GetDirectories(usersDirName);
+                foreach (string directory in dirs)
+                {
+                    string[] files = Directory.GetFiles(directory);
+                    foreach (string file in files)
+                    {
+                        using (StreamReader reader = new StreamReader(file))
+                        {
+                            string fileEmail = reader.ReadLine();
+                            string filePass = reader.ReadLine();
+                            string fileRole = reader.ReadLine();
+                            res.Add(fileEmail);
+                        }
+                    }
+                }
+            }
+            res.Sort();
+            return res;
+        }
+
         public static bool CreateDirectory(string path, string directoryName)
         {
             string dirPath = System.IO.Path.Combine(path, directoryName);
