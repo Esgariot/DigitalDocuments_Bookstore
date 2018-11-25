@@ -40,8 +40,7 @@
             Margin="20 20"
             Background="White"
             Foreground="Black"
-            Text="&#x0a;&#x0a;
-            Przykładowy powód odrzucenia"
+            Text="Przykladowy powod odrzucenia"
             />
 
         <Button x:Name="backButton"
