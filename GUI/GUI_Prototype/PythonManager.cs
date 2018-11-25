@@ -18,10 +18,10 @@ namespace GUI_Prototype
         // !!!! CHANGE THIS VARIABLES !!!!
 
         // full path of python interpreter (it's important if this is 32-bit or 64-bit)
-        public static string PYTHON = @"C:\Users\bogda\AppData\Local\Programs\Python\Python37\python.exe";
+        public static string PYTHON = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\python.exe";
 
         // python app to call  
-        public static string APP = @"C:\Users\bogda\OneDrive\Pulpit\test.py";
+        public static string APP; // = @"..\..\OrderRefusal.py";
 
         // dummy parameters to send Python script  
         public static List<string> ARGS = new List<string>();
