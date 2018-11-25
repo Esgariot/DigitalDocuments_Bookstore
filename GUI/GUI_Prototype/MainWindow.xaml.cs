@@ -128,6 +128,13 @@ namespace GUI_Prototype
             }
 
             ArchiviseCurrentTransaction();
+
+            // wygenerowanie pliku HTML
+            string pathToXML = ""; //UZUPELNIC !!!!!!!!!!!!!!
+            PythonManager.APP = @"..\..\PurchaseOrderTemplateHTML.py";
+            PythonManager.ARGS.Add(pathToXML);
+            string arguments = PythonManager.PrepareArguments(PythonManager.ARGS);
+            string res = PythonManager.Call(PythonManager.PYTHON, PythonManager.APP, arguments);
         }
 
         private void attachmentImage_MouseDown(object sender, MouseButtonEventArgs e)
