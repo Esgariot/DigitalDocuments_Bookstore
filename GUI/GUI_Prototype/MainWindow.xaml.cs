@@ -19,6 +19,7 @@ using OpenPop.Mime;
 
 using System.IO;
 using System.ComponentModel;
+using Microsoft.Win32;
 
 namespace GUI_Prototype
 {
@@ -69,6 +70,25 @@ namespace GUI_Prototype
         {
             //ExcelManager.openfile();
             confirmTemplateButton.IsEnabled = true;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "XML Files (*.xml)|*.xml";
+            string xmlFile = "";
+            if(openFileDialog.ShowDialog() == true)
+            {
+                xmlFile = openFileDialog.FileName;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            saveFileDialog.Title = "Save as...";
+            string csvFile = "";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                csvFile = saveFileDialog.FileName;
+            }
+            string args = $"{xmlFile} {csvFile}";
+            PythonManager.Call(PythonManager.PYTHON , @"..\..\python_scripts\XmlToExcel.py", args);
         }
 
         private void confirmTemplateButton_Click(object sender, RoutedEventArgs e)
@@ -89,6 +109,28 @@ namespace GUI_Prototype
             MessageBox confirmProductsMsgBox = new MessageBox("Czy na pewno chcesz potwierdzić produkty?", "MB_YESNO");
             confirmProductsMsgBox.Show();
             confirmProductsMsgBox.Closing += confirmProductsMsgBox_Closing;
+
+            confirmTemplateButton.IsEnabled = true;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            string csvFile = "";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                csvFile = openFileDialog.FileName;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XML Files (*.xml)|*.xml";
+            saveFileDialog.Title = "Save as...";
+            string xmlFile = "";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                xmlFile = saveFileDialog.FileName;
+            }
+            string args = $"{csvFile} {xmlFile}";
+            PythonManager.Call(PythonManager.PYTHON, @"..\..\python_scripts\CsvToXml.py", args);
+
         }
 
         private void confirmProductsMsgBox_Closing(object sender, CancelEventArgs e)
