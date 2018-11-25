@@ -28,6 +28,7 @@ namespace GUI_Prototype
         EmailWrapper emailWrapper = new EmailWrapper();
         List<Attachment> visibleAttachments = new List<Attachment>();
         public static bool isLogged = false;
+        XPDLManager manager;
 
         public MainWindow()
         {
@@ -64,6 +65,7 @@ namespace GUI_Prototype
         {
             prepareTemplateButton.IsEnabled = true;
             MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.CLIENT_OFFER_ACCEPTED);
+            manager.SetCurrentActivity("CLIENT_OFFER_ACCEPTED");
         }
 
         private void prepareTemplateButton_Click(object sender, RoutedEventArgs e)
@@ -96,6 +98,10 @@ namespace GUI_Prototype
             WorkersChooseWindow workersChooseWindow = new WorkersChooseWindow();
             workersChooseWindow.Show();
             //prepareProductsButton.IsEnabled = true;
+            manager.SetCurrentActivity("PRODUCTS_LIST_ACCEPTED");
+            approveOrderButton.IsEnabled = true;
+
+
         }
 
         private void prepareProductsButton_Click(object sender, RoutedEventArgs e)
@@ -237,6 +243,39 @@ namespace GUI_Prototype
             }
         }
 
+        private void enableButtonsForMain()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "XML Files (*.xml)|*.xml";
+            openFileDialog.Title = "Path to xpdl file";
+            string xpdlFile = "";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                xpdlFile = openFileDialog.FileName;
+            }
+
+            if (xpdlFile != "")
+            {
+                manager = new XPDLManager(xpdlFile);
+                manager.SetCurrentActivity("PRODUCTS_LIST_ACCEPTED");
+                if (manager.GetCurrentActivity() == "CLIENT_OFFER_ACCEPTED")
+                {
+                    prepareProductsButton.IsEnabled = true;
+                }
+                else if(manager.GetCurrentActivity() == "CLIENT_OFFER")
+                {
+                    acceptButton.IsEnabled = true;
+                    rejectButton.IsEnabled = true;
+                }
+                else if(manager.GetCurrentActivity() == "PRODUCTS_LIST_ACCEPTED")
+                {
+                    approveOrderButton.IsEnabled = true;
+                }
+
+            }
+;
+        }
+
         private void PrepareGUI()
         {
             BlockGUI();
@@ -246,8 +285,7 @@ namespace GUI_Prototype
                 case "GUEST":
                     break;
                 case "MAIN_EMPLOYEE":
-                    acceptButton.IsEnabled = true;
-                    rejectButton.IsEnabled = true;
+                    enableButtonsForMain();
                     break;
                 case "DEPARTMENT_EMPLOYEE":
                     acceptButton.IsEnabled = false;
