@@ -26,7 +26,7 @@ namespace GUI_Prototype
 
         public static bool MSGBOX_RESPONSE = false;
 
-        internal static List<string> getWorkersEmails()
+        public static List<string> getWorkersEmails()
         {
             List<string> res = new List<string>();
             if (Directory.Exists(usersDirPath))
