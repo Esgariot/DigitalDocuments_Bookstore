@@ -52,18 +52,31 @@ namespace GUI_Prototype
 
             Utils.CreateDirectory(Utils.rootPath, Utils.usersDirName);
             Utils.CreateDirectory(Utils.rootPath, Utils.excelDirName);
+
+            //utworz nowy pusty xpdl w bin/Debug na podstawie szablonu
+            string xpdlTemplatePath = @"../../xpdl_template.xml";
+
+            FileInfo f1 = new FileInfo(xpdlTemplatePath);
+            if(f1.Exists)
+            {
+                f1.CopyTo(string.Format("{0}", Utils.xpdlFileName));
+            }
+
+            //xpdlManager = new XPDLManager();
         }
 
         private void rejectButton_Click(object sender, RoutedEventArgs e)
         {
             ReasonWindow rw = new ReasonWindow();
             rw.Show();
+            XPDLManager.SetCurrentActivity("CLIENT_OFFER_REJECTED");
         }
 
         private void acceptButton_Click(object sender, RoutedEventArgs e)
         {
             prepareTemplateButton.IsEnabled = true;
             MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.CLIENT_OFFER_ACCEPTED);
+            XPDLManager.SetCurrentActivity("CLIENT_OFFER_ACCEPTED");
         }
 
         private void prepareTemplateButton_Click(object sender, RoutedEventArgs e)

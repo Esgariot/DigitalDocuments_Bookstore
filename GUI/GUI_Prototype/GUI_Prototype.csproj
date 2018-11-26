@@ -86,6 +86,7 @@
     <Compile Include="WorkersSelectionWindow.xaml.cs">
       <DependentUpon>WorkersSelectionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XPDLManager.cs" />
     <Page Include="LogInWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
