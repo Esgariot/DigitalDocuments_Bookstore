@@ -16,6 +16,7 @@ using CSharpEmailLibrary;
 
 namespace GUI_Prototype
 {
+
     /// <summary>
     /// Interaction logic for WorkersChooseWindow.xaml
     /// </summary>
@@ -34,18 +35,41 @@ namespace GUI_Prototype
             this.Close();
         }
 
+
+
+        public int countDepartmentsToAprove = 1;
+        public List<String> departmentsList = new List<String>();
+
         private void approveButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.department_1_Checkbox.IsChecked == true)
+            {
                 sendWorkerRequestMessage(workerMailAddresses[0]);
+                //countDepartmentsToAprove++;
+                departmentsList.Add("dokumenty.department.1@gmail.com");
+            }
             if (this.department_2_Checkbox.IsChecked == true)
+            {
                 sendWorkerRequestMessage(workerMailAddresses[1]);
+                //countDepartmentsToAprove++;
+                departmentsList.Add("dokumenty.department.2@gmail.com");
+            }
             if (this.department_3_Checkbox.IsChecked == true)
+            {
                 sendWorkerRequestMessage(workerMailAddresses[2]);
+                //countDepartmentsToAprove++;
+                departmentsList.Add("dokumenty.department.3@gmail.com");
+            }
             if (this.department_4_Checkbox.IsChecked == true)
+            {
                 sendWorkerRequestMessage(workerMailAddresses[3]);
-
+                //countDepartmentsToAprove++;
+                departmentsList.Add("dokumenty.department.4@gmail.com");
+            }
+            countDepartmentsToAprove = departmentsList.Count;
+            //departmentsList.Remove("dokumenty.department.1@gmail.com");           
             this.Close();
+
         }
 
         private void sendWorkerRequestMessage(string workerMailAddress)
@@ -55,7 +79,7 @@ namespace GUI_Prototype
             mail.SetBody("Prosze wypelnic zalaczony plik produktami z Pani/Pana dzialu. \n");
             mail.SetReplyTo(CSharpEmailLibrary.MailsCredentials.mainMailAddress);
             mail.AddAttachment(System.IO.Path.Combine(Utils.excelDirPath, Utils.excelFileName));
-            mail.SetHeader(CSharpEmailLibrary.MailsCredentials.mainMailStatusHeaderKey, 
+            mail.SetHeader(CSharpEmailLibrary.MailsCredentials.mainMailStatusHeaderKey,
                 MailStatus.ADDING_PRODUCTS_REQUEST.ToString());
 
             MailSender ms = new MailSender(CSharpEmailLibrary.MailsCredentials.mainMailAddress,
@@ -78,7 +102,7 @@ namespace GUI_Prototype
 
         private void department_1_Checkbox_Click(object sender, RoutedEventArgs e)
         {
-           approveButtonEnabling();
+            approveButtonEnabling();
         }
 
         private void department_2_Checkbox_Click(object sender, RoutedEventArgs e)
