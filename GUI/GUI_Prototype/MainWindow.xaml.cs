@@ -55,19 +55,31 @@ namespace GUI_Prototype
 
             Utils.CreateDirectory(Utils.rootPath, Utils.usersDirName);
             Utils.CreateDirectory(Utils.rootPath, Utils.excelDirName);
+
+            //utworz nowy pusty xpdl w bin/Debug na podstawie szablonu
+            string xpdlTemplatePath = @"../../xpdl_template.xml";
+
+            FileInfo f1 = new FileInfo(xpdlTemplatePath);
+            if(f1.Exists)
+            {
+                f1.CopyTo(string.Format("{0}", Utils.xpdlFileName));
+            }
+
+            //xpdlManager = new XPDLManager();
         }
 
         private void rejectButton_Click(object sender, RoutedEventArgs e)
         {
             ReasonWindow rw = new ReasonWindow();
             rw.Show();
+            XPDLManager.SetCurrentActivity("CLIENT_OFFER_REJECTED");
         }
 
         private void acceptButton_Click(object sender, RoutedEventArgs e)
         {
             prepareTemplateButton.IsEnabled = true;
             MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.CLIENT_OFFER_ACCEPTED);
-            manager.SetCurrentActivity("CLIENT_OFFER_ACCEPTED");
+            XPDLManager.SetCurrentActivity("CLIENT_OFFER_ACCEPTED");
         }
 
         private void prepareTemplateButton_Click(object sender, RoutedEventArgs e)
@@ -147,6 +159,26 @@ namespace GUI_Prototype
             if (Utils.MSGBOX_RESPONSE)
             {
                 //approveOrderButton.IsEnabled = true;
+                // count departments, conditions for yes button, need add "if yes"
+                if (Utils.loggedUser == "dokumenty.department.1@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.1@gmail.com");
+                else if (Utils.loggedUser == "dokumenty.department.2@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.2@gmail.com");
+                else if (Utils.loggedUser == "dokumenty.department.3@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.3@gmail.com");
+                else if (Utils.loggedUser == "dokumenty.department.4@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.4@gmail.com");
+
+                departments.Text = "Do zatwierdzenia przez działy: " + "\n";
+                for (int i = 0; i < WorkersChooseWindow.counters.departmentsList.Count; i++)
+                {
+                    departments.Text += WorkersChooseWindow.counters.departmentsList[i] + "\n";
+                }
+
+                if (WorkersChooseWindow.counters.departmentsList.Count == 0)
+                    finishOrderButton.IsEnabled = true;
+
+                // end count departments
             }
             else
             {
@@ -179,6 +211,15 @@ namespace GUI_Prototype
             }
 
             ArchiviseCurrentTransaction();
+
+            // wygenerowanie pliku HTML
+            string pathToXML = ""; //UZUPELNIC !!!!!!!!!!!!!!
+            PythonManager.APP = @"..\..\PurchaseOrderTemplateHTML.py";
+            PythonManager.ARGS.Add(pathToXML);
+            string arguments = PythonManager.PrepareArguments(PythonManager.ARGS);
+            string res = PythonManager.Call(PythonManager.PYTHON, PythonManager.APP, arguments);
+
+            XPDLManager.SetCurrentActivity("RESPONSE_TO_SERVER");
         }
 
         private void attachmentImage_MouseDown(object sender, MouseButtonEventArgs e)
@@ -414,6 +455,8 @@ namespace GUI_Prototype
 
             Archive archive = new Archive(pathToDatabaseFolder);
             archive.ArchiviseTransaction(transactionId, customer, xmlFile, xpdlFile);
+
+            XPDLManager.SetCurrentActivity("RESPONSE_TO_ARCHIVE");
         }
     }
 }

@@ -14,6 +14,7 @@ namespace GUI_Prototype
         public static string excelDirName = @"excel";
         public static string excelFileName = @"doc.xls";
         public static string excelDirPath = System.IO.Path.Combine(rootPath, excelDirName);
+        public static string xpdlFileName = @"xpdl_process.xml";
 
         public static bool CAN_ACCEPT_ORDER = false;
         public static bool CAN_REJECT_ORDER = false;

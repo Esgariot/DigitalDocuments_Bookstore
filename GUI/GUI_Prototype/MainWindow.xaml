@@ -229,6 +229,19 @@
                 Click="finishOrderButton_Click"
                 />
 
+            
+            
         </Grid>
+        <TextBlock x:Name="departments" 
+                   HorizontalAlignment="Left" 
+                   Margin="67,2,0,0" 
+                   TextWrapping="Wrap" 
+                   Text="Do zatwierdzenia przez działy: " 
+                   VerticalAlignment="Top" 
+                   Width="215" 
+                   Height="98" 
+                   Grid.RowSpan="2" 
+                   Grid.Column="1"/>
+        
     </Grid>
 </Window>
