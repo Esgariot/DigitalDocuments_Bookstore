@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xpdl:Package xmlns:xpdl="http://www.wfmc.org/2008/XPDL2.1" xmlns="http://www.wfmc.org/2008/XPDL2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="newpkg1" Name="newpkg1" xsi:schemaLocation="http://www.wfmc.org/2008/XPDL2.1 http://www.wfmc.org/standards/docs/bpmnxpdl_31.xsd">
+    <xpdl:PackageHeader>
+        <xpdl:XPDLVersion>2.1</xpdl:XPDLVersion>
+        <xpdl:Vendor>(c) Together Teamsolutions Co., Ltd.</xpdl:Vendor>
+        <xpdl:Created>2018-10-22 10:43:11</xpdl:Created>
+    </xpdl:PackageHeader>
+    <xpdl:Pools>
+        <xpdl:Pool BoundaryVisible="true" Id="newpkg1_pool1" MainPool="true" Name="Proces biznesowy Dokumenty Cyfrowe" Orientation="HORIZONTAL" Process="DC">
+            <xpdl:Lanes>
+                <xpdl:Lane Id="newpkg1_pool1_lan1" Name="Common expression lane">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,255,215" IsVisible="true" ToolId="JaWE"/>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,255,215" IsVisible="true" ToolId="JaWE"/>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                </xpdl:Lane>
+            </xpdl:Lanes>
+            <xpdl:NodeGraphicsInfos>
+                <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,255,215" IsVisible="true" ToolId="JaWE"/>
+            </xpdl:NodeGraphicsInfos>
+        </xpdl:Pool>
+    </xpdl:Pools>
+    <xpdl:WorkflowProcesses>
+        <xpdl:WorkflowProcess AccessLevel="PUBLIC" Id="DC" Name="Proces biznesowy Dokumenty Cyfrowe">
+            <xpdl:ProcessHeader>
+                <xpdl:Created>2018-10-22 10:43:27</xpdl:Created>
+            </xpdl:ProcessHeader>
+            <xpdl:Activities>
+                <xpdl:Activity Id="newpkg1_wp1_act1">
+                    <xpdl:Event>
+                        <xpdl:StartEvent Trigger="None"/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="102,204,51" Height="31" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="31">
+                            <xpdl:Coordinates XCoordinate="106" YCoordinate="55"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="CLIENT_OFFER" Name="Klient:     Zapytanie ofertowe (PDF)">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="CLIENT_OFFER"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="258" YCoordinate="40"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="DECISION" Name="Pracownik 1: Decyzja (PDF + PDF)">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="DECISION"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="418" YCoordinate="41"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="CHOICE1">
+                    <xpdl:Route GatewayType="Exclusive"/>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Split Type="Exclusive">
+                                <xpdl:TransitionRefs>
+                                    <xpdl:TransitionRef Id="newpkg1_wp1_tra4"/>
+                                    <xpdl:TransitionRef Id="newpkg1_wp1_tra5"/>
+                                </xpdl:TransitionRefs>
+                            </xpdl:Split>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="CHOICE1"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,229,124" Height="43" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="43">
+                            <xpdl:Coordinates XCoordinate="441" YCoordinate="144"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="CLIENT_OFFER_ACCEPTED" Name="Pracownik 1: Przygotowanie szablonu oferty">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="CLIENT_OFFER_ACCEPTED"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="503" YCoordinate="221"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="CLIENT_OFFER_REJECTED" Name="Klient: Uzasadnienie (PDF)">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="CLIENT_OFFER_REJECTED"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="333" YCoordinate="221"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="newpkg1_wp1_act7">
+                    <xpdl:Event>
+                        <xpdl:EndEvent Result="None"/>
+                    </xpdl:Event>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="CLIENT_OFFER_REJECTED"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="236,120,98" Height="31" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="31">
+                            <xpdl:Coordinates XCoordinate="224" YCoordinate="236"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="CHOICE2">
+                    <xpdl:Route GatewayType="Parallel"/>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Split Type="Parallel">
+                                <xpdl:TransitionRefs>
+                                    <xpdl:TransitionRef Id="newpkg1_wp1_tra9"/>
+                                    <xpdl:TransitionRef Id="newpkg1_wp1_tra7"/>
+                                </xpdl:TransitionRefs>
+                            </xpdl:Split>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="ADDING_PRODUCTS_REQUEST"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,229,124" Height="43" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="43">
+                            <xpdl:Coordinates XCoordinate="528" YCoordinate="313"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="ADDING_PRODUCTS_RESPONSE" Name="Pracownik 2: dodawanie produktów (Excel)">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="ADDING_PRODUCTS_RESPONSE"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="376" YCoordinate="390"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="RESPONSE_TO_ARCHIVE" Name="Archiwum: archwizacja (XML + XPDL)">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="RESPONSE_TO_SERVER"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="610" YCoordinate="727"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="CHOICE3">
+                    <xpdl:Route GatewayType="Parallel"/>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Join Type="Parallel"/>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="PRODUCTS_LIST_MERGED"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,229,124" Height="43" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="43">
+                            <xpdl:Coordinates XCoordinate="528" YCoordinate="483"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="RESPONSE_TO_SERVER" Name="Serwer WWW: Wstawienie na stronę (HTML )">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="RESPONSE_TO_SERVER"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="504" YCoordinate="727"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="RESPONSE_TO_CLIENT" Name="Klient: Otrzymanie oferty (PDF)">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="RESPONSE_TO_CLIENT"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="395" YCoordinate="728"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="newpkg1_wp1_act14">
+                    <xpdl:Event>
+                        <xpdl:EndEvent Result="None"/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="236,120,98" Height="31" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="31">
+                            <xpdl:Coordinates XCoordinate="423" YCoordinate="824"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="newpkg1_wp1_act15">
+                    <xpdl:Event>
+                        <xpdl:EndEvent Result="None"/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="236,120,98" Height="31" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="31">
+                            <xpdl:Coordinates XCoordinate="534" YCoordinate="823"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="newpkg1_wp1_act16">
+                    <xpdl:Event>
+                        <xpdl:EndEvent Result="None"/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="236,120,98" Height="31" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="31">
+                            <xpdl:Coordinates XCoordinate="639" YCoordinate="824"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="ADDING_PRODUCTS_RESPONSE_EXCEL" Name="Pracownik3: dodawanie produktów Excel">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="ADDING_PRODUCTS_RESPONSE"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="60" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="615" YCoordinate="390"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="PRODUCTS_LIST_ACCEPTED" Name="Pracownik1: zatwierdzenie listy produktów dokończenie oferty">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performers>
+                        <xpdl:Performer>Common expression lane</xpdl:Performer>
+                    </xpdl:Performers>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="PRODUCTS_LIST_ACCEPTED"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="187,247,190" Height="80" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="90">
+                            <xpdl:Coordinates XCoordinate="506" YCoordinate="557"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+                <xpdl:Activity Id="CHOICE4">
+                    <xpdl:Route GatewayType="Parallel"/>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Split Type="Parallel">
+                                <xpdl:TransitionRefs>
+                                    <xpdl:TransitionRef Id="newpkg1_wp1_tra13"/>
+                                    <xpdl:TransitionRef Id="newpkg1_wp1_tra18"/>
+                                    <xpdl:TransitionRef Id="newpkg1_wp1_tra19"/>
+                                </xpdl:TransitionRefs>
+                            </xpdl:Split>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:ExtendedAttributes>
+                        <xpdl:ExtendedAttribute Name="Status" Value="PRODUCTS_LIST_ACCEPTED"/>
+                    </xpdl:ExtendedAttributes>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,229,124" Height="43" IsVisible="true" LaneId="newpkg1_pool1_lan1" ToolId="JaWE" Width="43">
+                            <xpdl:Coordinates XCoordinate="529" YCoordinate="654"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                </xpdl:Activity>
+            </xpdl:Activities>
+            <xpdl:Transitions>
+                <xpdl:Transition From="newpkg1_wp1_act1" Id="newpkg1_wp1_tra1" To="CLIENT_OFFER">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CLIENT_OFFER" Id="newpkg1_wp1_tra2" To="DECISION">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="DECISION" Id="newpkg1_wp1_tra3" To="CHOICE1">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CHOICE1" Id="newpkg1_wp1_tra4" To="CLIENT_OFFER_REJECTED">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CHOICE1" Id="newpkg1_wp1_tra5" To="CLIENT_OFFER_ACCEPTED">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CLIENT_OFFER_REJECTED" Id="newpkg1_wp1_tra6" To="newpkg1_wp1_act7">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CLIENT_OFFER_ACCEPTED" Id="newpkg1_wp1_tra8" To="CHOICE2">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CHOICE2" Id="newpkg1_wp1_tra9" To="ADDING_PRODUCTS_RESPONSE">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="ADDING_PRODUCTS_RESPONSE" Id="newpkg1_wp1_tra10" To="CHOICE3">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="RESPONSE_TO_CLIENT" Id="newpkg1_wp1_tra14" To="newpkg1_wp1_act14">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="RESPONSE_TO_SERVER" Id="newpkg1_wp1_tra15" To="newpkg1_wp1_act15">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="RESPONSE_TO_ARCHIVE" Id="newpkg1_wp1_tra16" To="newpkg1_wp1_act16">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CHOICE2" Id="newpkg1_wp1_tra7" To="ADDING_PRODUCTS_RESPONSE_EXCEL">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="ADDING_PRODUCTS_RESPONSE_EXCEL" Id="newpkg1_wp1_tra17" To="CHOICE3">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CHOICE3" Id="newpkg1_wp1_tra11" To="PRODUCTS_LIST_ACCEPTED">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="PRODUCTS_LIST_ACCEPTED" Id="newpkg1_wp1_tra12" To="CHOICE4">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CHOICE4" Id="newpkg1_wp1_tra13" To="RESPONSE_TO_CLIENT">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CHOICE4" Id="newpkg1_wp1_tra18" To="RESPONSE_TO_SERVER">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+                <xpdl:Transition From="CHOICE4" Id="newpkg1_wp1_tra19" To="RESPONSE_TO_ARCHIVE">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo FillColor="0,0,0" IsVisible="true" Style="NO_ROUTING_SPLINE" ToolId="JaWE"/>
+                    </xpdl:ConnectorGraphicsInfos>
+                </xpdl:Transition>
+            </xpdl:Transitions>
+        </xpdl:WorkflowProcess>
+    </xpdl:WorkflowProcesses>
+    <xpdl:ExtendedAttributes>
+        <xpdl:ExtendedAttribute Name="EDITING_TOOL" Value="Together Workflow Editor"/>
+        <xpdl:ExtendedAttribute Name="EDITING_TOOL_VERSION" Value="4.8-1-20130204-2300-TAB-2.4-1"/>
+        <xpdl:ExtendedAttribute Name="JaWE_CONFIGURATION" Value="default"/>
+    </xpdl:ExtendedAttributes>
+</xpdl:Package>
