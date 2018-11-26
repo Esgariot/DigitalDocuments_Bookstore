@@ -190,6 +190,8 @@ namespace GUI_Prototype
             PythonManager.ARGS.Add(pathToXML);
             string arguments = PythonManager.PrepareArguments(PythonManager.ARGS);
             string res = PythonManager.Call(PythonManager.PYTHON, PythonManager.APP, arguments);
+
+            XPDLManager.SetCurrentActivity("RESPONSE_TO_SERVER");
         }
 
         private void attachmentImage_MouseDown(object sender, MouseButtonEventArgs e)
@@ -377,6 +379,8 @@ namespace GUI_Prototype
 
             Archive archive = new Archive(pathToDatabaseFolder);
             archive.ArchiviseTransaction(transactionId, customer, xmlFile, xpdlFile);
+
+            XPDLManager.SetCurrentActivity("RESPONSE_TO_ARCHIVE");
         }
     }
 }

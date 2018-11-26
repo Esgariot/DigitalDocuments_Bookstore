@@ -28,7 +28,7 @@ namespace GUI_Prototype
         /* wypisz ID kolejnej aktywnosci (lub kilku rownorzednych) wzgledem aktualnie zapisanej aktywnosci */
         public static string[] GetNext()
         {
-            string[] elements = new string[3];
+            string[] elements = new string[4];
             int counter = 0;
             
             foreach(XElement t in transitions)
@@ -45,7 +45,7 @@ namespace GUI_Prototype
         /* znajduje aktywność(aktywności) występującą po zadanej aktywności; zwraca tablicę stringów */
         public static string[] GetNext(string activityId)
         {
-            string[] elements = new string[3];
+            string[] elements = new string[4];
             int counter = 0;
             
             foreach(XElement t in transitions)
