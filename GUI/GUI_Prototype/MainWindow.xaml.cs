@@ -19,7 +19,6 @@ using OpenPop.Mime;
 
 using System.IO;
 using System.ComponentModel;
-using Microsoft.Win32;
 
 namespace GUI_Prototype
 {
@@ -70,25 +69,6 @@ namespace GUI_Prototype
         {
             //ExcelManager.openfile();
             confirmTemplateButton.IsEnabled = true;
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "XML Files (*.xml)|*.xml";
-            string xmlFile = "";
-            if(openFileDialog.ShowDialog() == true)
-            {
-                xmlFile = openFileDialog.FileName;
-            }
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            saveFileDialog.Title = "Save as...";
-            string csvFile = "";
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                csvFile = saveFileDialog.FileName;
-            }
-            string args = $"{xmlFile} {csvFile}";
-            PythonManager.Call(PythonManager.PYTHON , @"..\..\python_scripts\XmlToExcel.py", args);
         }
 
         private void confirmTemplateButton_Click(object sender, RoutedEventArgs e)
@@ -96,6 +76,7 @@ namespace GUI_Prototype
             WorkersChooseWindow workersChooseWindow = new WorkersChooseWindow();
             workersChooseWindow.Show();
             //prepareProductsButton.IsEnabled = true;
+
         }
 
         private void prepareProductsButton_Click(object sender, RoutedEventArgs e)
@@ -103,33 +84,20 @@ namespace GUI_Prototype
             //ExcelManager.openfile();
             confirmProductsButton.IsEnabled = true;
         }
-
         private void confirmProductsButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox confirmProductsMsgBox = new MessageBox("Czy na pewno chcesz potwierdzić produkty?", "MB_YESNO");
+            MessageBox2 confirmProductsMsgBox = new MessageBox2("Czy na pewno chcesz potwierdzić produkty?", "MB_YESNO");
             confirmProductsMsgBox.Show();
             confirmProductsMsgBox.Closing += confirmProductsMsgBox_Closing;
 
-            confirmTemplateButton.IsEnabled = true;
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            string csvFile = "";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                csvFile = openFileDialog.FileName;
-            }
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "XML Files (*.xml)|*.xml";
-            saveFileDialog.Title = "Save as...";
-            string xmlFile = "";
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                xmlFile = saveFileDialog.FileName;
-            }
-            string args = $"{csvFile} {xmlFile}";
-            PythonManager.Call(PythonManager.PYTHON, @"..\..\python_scripts\CsvToXml.py", args);
+            if (Utils.loggedUser == "dokumenty.department.1@gmail.com")
+                WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.1@gmail.com");
+            else if (Utils.loggedUser == "dokumenty.department.2@gmail.com")
+                WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.2@gmail.com");
+            else if (Utils.loggedUser == "dokumenty.department.3@gmail.com")
+                WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.3@gmail.com");
+            else if (Utils.loggedUser == "dokumenty.department.4@gmail.com")
+                WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.4@gmail.com");
 
         }
 
@@ -148,15 +116,17 @@ namespace GUI_Prototype
         private void approveOrderButton_Click(object sender, RoutedEventArgs e)
         {
             //ExcelManager.openfile();
+
             finishOrderButton.IsEnabled = true;
         }
 
         private void finishOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox finishOrderMsgBox = new MessageBox("Czy na pewno chcesz zakończyć zamówienie?", "MB_YESNO");
+            MessageBox2 finishOrderMsgBox = new MessageBox2("Czy na pewno chcesz zakończyć zamówienie?", "MB_YESNO");
             finishOrderMsgBox.Show();
             finishOrderMsgBox.Closing += finishOrderMsgBox_Closing;
         }
+
 
         private void finishOrderMsgBox_Closing(object sender, CancelEventArgs e)
         {
@@ -166,11 +136,12 @@ namespace GUI_Prototype
             }
             else
             {
-                
+
             }
 
             ArchiviseCurrentTransaction();
         }
+
 
         private void attachmentImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -339,8 +310,8 @@ namespace GUI_Prototype
             //  *   numeru transakcji
 
             string pathToDatabaseFolder = @".\Archive\";
-			if (System.IO.Directory.Exists(pathToDatabaseFolder))
-				System.IO.Directory.CreateDirectory(pathToDatabaseFolder);
+            if (System.IO.Directory.Exists(pathToDatabaseFolder))
+                System.IO.Directory.CreateDirectory(pathToDatabaseFolder);
             string pathToFilesFolder = @"..\..\..\Tools\";
 
             FileStream xmlFile = File.Open(pathToFilesFolder + "PurchaseOrderTemplate.xml",
