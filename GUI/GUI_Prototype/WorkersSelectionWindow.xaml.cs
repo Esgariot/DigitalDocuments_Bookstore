@@ -36,9 +36,11 @@ namespace GUI_Prototype
         }
 
 
-
-        public int countDepartmentsToAprove = 1;
-        public List<String> departmentsList = new List<String>();
+        public static class counters
+        {
+            public static int countDepartmentsToAprove = 1;
+            public static List<String> departmentsList = new List<String>();
+        }
 
         private void approveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -46,27 +48,27 @@ namespace GUI_Prototype
             {
                 sendWorkerRequestMessage(workerMailAddresses[0]);
                 //countDepartmentsToAprove++;
-                departmentsList.Add("dokumenty.department.1@gmail.com");
+                counters.departmentsList.Add("dokumenty.department.1@gmail.com");
             }
             if (this.department_2_Checkbox.IsChecked == true)
             {
                 sendWorkerRequestMessage(workerMailAddresses[1]);
                 //countDepartmentsToAprove++;
-                departmentsList.Add("dokumenty.department.2@gmail.com");
+                counters.departmentsList.Add("dokumenty.department.2@gmail.com");
             }
             if (this.department_3_Checkbox.IsChecked == true)
             {
                 sendWorkerRequestMessage(workerMailAddresses[2]);
                 //countDepartmentsToAprove++;
-                departmentsList.Add("dokumenty.department.3@gmail.com");
+                counters.departmentsList.Add("dokumenty.department.3@gmail.com");
             }
             if (this.department_4_Checkbox.IsChecked == true)
             {
                 sendWorkerRequestMessage(workerMailAddresses[3]);
                 //countDepartmentsToAprove++;
-                departmentsList.Add("dokumenty.department.4@gmail.com");
+                counters.departmentsList.Add("dokumenty.department.4@gmail.com");
             }
-            countDepartmentsToAprove = departmentsList.Count;
+            counters.countDepartmentsToAprove = counters.departmentsList.Count;
             //departmentsList.Remove("dokumenty.department.1@gmail.com");           
             this.Close();
 
