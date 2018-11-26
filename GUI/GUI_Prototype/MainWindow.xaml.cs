@@ -112,21 +112,6 @@ namespace GUI_Prototype
 
             confirmTemplateButton.IsEnabled = true;
 
-            // count departments, conditions for yes button, need add "if yes"
-            if (Utils.loggedUser == "dokumenty.department.1@gmail.com")
-                WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.1@gmail.com");
-            else if (Utils.loggedUser == "dokumenty.department.2@gmail.com")
-                WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.2@gmail.com");
-            else if (Utils.loggedUser == "dokumenty.department.3@gmail.com")
-                WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.3@gmail.com");
-            else if (Utils.loggedUser == "dokumenty.department.4@gmail.com")
-                WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.4@gmail.com");
-            
-            if (WorkersChooseWindow.counters.departmentsList.Count == 0)
-                finishOrderButton.IsEnabled = true;
-
-            // end count departments
-
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
             string csvFile = "";
@@ -153,6 +138,26 @@ namespace GUI_Prototype
             if (Utils.MSGBOX_RESPONSE)
             {
                 //approveOrderButton.IsEnabled = true;
+                // count departments, conditions for yes button, need add "if yes"
+                if (Utils.loggedUser == "dokumenty.department.1@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.1@gmail.com");
+                else if (Utils.loggedUser == "dokumenty.department.2@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.2@gmail.com");
+                else if (Utils.loggedUser == "dokumenty.department.3@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.3@gmail.com");
+                else if (Utils.loggedUser == "dokumenty.department.4@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.4@gmail.com");
+
+                departments.Text = "Do zatwierdzenia przez działy: " + "\n";
+                for (int i = 0; i < WorkersChooseWindow.counters.departmentsList.Count; i++)
+                {
+                    departments.Text += WorkersChooseWindow.counters.departmentsList[i] + "\n";
+                }
+
+                if (WorkersChooseWindow.counters.departmentsList.Count == 0)
+                    finishOrderButton.IsEnabled = true;
+
+                // end count departments
             }
             else
             {
