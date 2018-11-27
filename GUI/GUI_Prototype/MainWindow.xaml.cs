@@ -20,6 +20,7 @@ using OpenPop.Mime;
 using System.IO;
 using System.ComponentModel;
 using Microsoft.Win32;
+using System.Xml;
 
 namespace GUI_Prototype
 {
@@ -28,6 +29,7 @@ namespace GUI_Prototype
         EmailWrapper emailWrapper = new EmailWrapper();
         List<Attachment> visibleAttachments = new List<Attachment>();
         public static bool isLogged = false;
+        string pathToXML;
 
         public MainWindow()
         {
@@ -141,9 +143,9 @@ namespace GUI_Prototype
             {
                 xmlFile = saveFileDialog.FileName;
             }
+            pathToXML = xmlFile;
             string args = $"{csvFile} {xmlFile}";
             PythonManager.Call(PythonManager.PYTHON, @"..\..\python_scripts\CsvToXml.py", args);
-
         }
 
         private void confirmProductsMsgBox_Closing(object sender, CancelEventArgs e)
@@ -375,27 +377,42 @@ namespace GUI_Prototype
 
         private void ArchiviseCurrentTransaction()
         {
-            //Nie pojęcia jak wskazać:
-            //  *   plikow xml i xpdl do archiwizowania
-            //  *   danych klienta
-            //  *   numeru transakcji
-
             string pathToDatabaseFolder = @".\Archive\";
 			if (System.IO.Directory.Exists(pathToDatabaseFolder))
 				System.IO.Directory.CreateDirectory(pathToDatabaseFolder);
-            string pathToFilesFolder = @"..\..\..\Tools\";
 
-            FileStream xmlFile = File.Open(pathToFilesFolder + "PurchaseOrderTemplate.xml",
+            FileStream xmlFile = File.Open(pathToXML,
                 System.IO.FileMode.Open);
 
-            FileStream xpdlFile = File.Open(pathToFilesFolder + "XPDL.txt",
+            FileStream xpdlFile = File.Open(".\\xpdl_process.xml",
                 System.IO.FileMode.Open);
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(pathToXML);
 
             CustomerEntity customer = new CustomerEntity();
-            customer.name = "";
+            string readedName;
+            try
+            {
+                readedName = doc.SelectSingleNode("/PurchaseOrder/Address/Name").InnerText;
+            }
+            catch (Exception e)
+            {
+                readedName = "";
+            }
+            customer.name = readedName;
             customer.mailAddress = "";
 
-            string transactionId = "JPA8296_30742581";
+            string readedId;
+            try
+            {
+                readedId = doc.SelectSingleNode("/PurchaseOrder/@PurchaseOrderNumber").Value;
+            }
+            catch (Exception e)
+            {
+                readedId = Guid.NewGuid().ToString();
+            }
+            string transactionId = readedId;
 
             Archive archive = new Archive(pathToDatabaseFolder);
             archive.ArchiviseTransaction(transactionId, customer, xmlFile, xpdlFile);
