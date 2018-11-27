@@ -100,8 +100,8 @@ namespace GUI_Prototype
             {
                 csvFile = saveFileDialog.FileName;
             }
-            //string args = $"{xmlFile} {csvFile}";
-            //PythonManager.Call(PythonManager.PYTHON , @"..\..\python_scripts\XmlToExcel.py", args);
+            string args = $"{xmlFile} {csvFile}";
+            PythonManager.Call(PythonManager.PYTHON , @"..\..\python_scripts\XmlToExcel.py", args);
         }
 
         private void confirmTemplateButton_Click(object sender, RoutedEventArgs e)
@@ -141,8 +141,8 @@ namespace GUI_Prototype
             {
                 xmlFile = saveFileDialog.FileName;
             }
-           // string args = $"{csvFile} {xmlFile}";
-            //PythonManager.Call(PythonManager.PYTHON, @"..\..\python_scripts\CsvToXml.py", args);
+            string args = $"{csvFile} {xmlFile}";
+            PythonManager.Call(PythonManager.PYTHON, @"..\..\python_scripts\CsvToXml.py", args);
 
         }
 
