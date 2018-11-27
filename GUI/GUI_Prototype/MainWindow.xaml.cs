@@ -100,8 +100,8 @@ namespace GUI_Prototype
             {
                 csvFile = saveFileDialog.FileName;
             }
-            string args = $"{xmlFile} {csvFile}";
-            PythonManager.Call(PythonManager.PYTHON , @"..\..\python_scripts\XmlToExcel.py", args);
+            //string args = $"{xmlFile} {csvFile}";
+            //PythonManager.Call(PythonManager.PYTHON , @"..\..\python_scripts\XmlToExcel.py", args);
         }
 
         private void confirmTemplateButton_Click(object sender, RoutedEventArgs e)
@@ -141,8 +141,8 @@ namespace GUI_Prototype
             {
                 xmlFile = saveFileDialog.FileName;
             }
-            string args = $"{csvFile} {xmlFile}";
-            PythonManager.Call(PythonManager.PYTHON, @"..\..\python_scripts\CsvToXml.py", args);
+           // string args = $"{csvFile} {xmlFile}";
+            //PythonManager.Call(PythonManager.PYTHON, @"..\..\python_scripts\CsvToXml.py", args);
 
         }
 
@@ -166,9 +166,8 @@ namespace GUI_Prototype
                 {
                     departments.Text += WorkersChooseWindow.counters.departmentsList[i] + "\n";
                 }
+                
 
-                if (WorkersChooseWindow.counters.departmentsList.Count == 0)
-                    finishOrderButton.IsEnabled = true;
 
                 // end count departments
             }
@@ -271,6 +270,7 @@ namespace GUI_Prototype
                     Utils.CAN_CONFIRM_TEMPLATE = true;
                     Utils.CAN_CONFIRM_ORDER = true;
                     Utils.CAN_FINISH_ORDER = true;
+                    finishOrderButton.IsEnabled = true;
                     break;
                 case "DEPARTMENT_EMPLOYEE":
                     Utils.CAN_ADD_PRODUCTS = true;
@@ -290,6 +290,8 @@ namespace GUI_Prototype
                 case "MAIN_EMPLOYEE":
                     acceptButton.IsEnabled = true;
                     rejectButton.IsEnabled = true;
+                    if (WorkersChooseWindow.counters.departmentsList.Count != 0)
+                        approveOrderButton.IsEnabled = false;
                     break;
                 case "DEPARTMENT_EMPLOYEE":
                     acceptButton.IsEnabled = false;
