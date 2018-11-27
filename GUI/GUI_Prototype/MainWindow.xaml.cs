@@ -36,14 +36,14 @@ namespace GUI_Prototype
             InitializeComponent();
 
             //demonstration purposes only
-            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.ADDING_PRODUCTS_REQUEST });
-            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.ADDING_PRODUCTS_RESPONSE });
-            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "oferta klienta", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER });
-            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "zaakceptowana oferta", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER_ACCEPTED });
-            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER_REJECTED });
-            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "zaakceptowana lista produktów", Type = Email.TypeEnum.Offer, State = MailStatus.PRODUCTS_LIST_ACCEPTED });
-            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.RESPONSE_TO_ARCHIVE });
-            emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "połączona lista produktów", Type = Email.TypeEnum.Offer, State = MailStatus.PRODUCTS_LIST_MERGED });
+            //emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.ADDING_PRODUCTS_REQUEST });
+            //emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.ADDING_PRODUCTS_RESPONSE });
+            //emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "oferta klienta", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER });
+            //emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "zaakceptowana oferta", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER_ACCEPTED });
+            //emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.CLIENT_OFFER_REJECTED });
+            //emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "zaakceptowana lista produktów", Type = Email.TypeEnum.Offer, State = MailStatus.PRODUCTS_LIST_ACCEPTED });
+            //emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "fffff", Type = Email.TypeEnum.Offer, State = MailStatus.RESPONSE_TO_ARCHIVE });
+            //emailWrapper.Emails.Add(new Email { Attachments = new List<Attachment>(), Date = "data", From = "klient", Subject = "połączona lista produktów", Type = Email.TypeEnum.Offer, State = MailStatus.PRODUCTS_LIST_MERGED });
             ////////////////////////////
 
             //MailList.ItemsSource = emailWrapper.Emails;
@@ -117,6 +117,7 @@ namespace GUI_Prototype
         {
             //ExcelManager.openfile();
             confirmProductsButton.IsEnabled = true;
+            MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.ADDING_PRODUCTS_REQUEST);
         }
 
         private void confirmProductsButton_Click(object sender, RoutedEventArgs e)
@@ -146,6 +147,8 @@ namespace GUI_Prototype
             pathToXML = xmlFile;
             string args = $"{csvFile} {xmlFile}";
             PythonManager.Call(PythonManager.PYTHON, @"..\..\python_scripts\CsvToXml.py", args);
+
+            //MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.PRODUCTS_LIST_ACCEPTED);
         }
 
         private void confirmProductsMsgBox_Closing(object sender, CancelEventArgs e)
@@ -168,7 +171,11 @@ namespace GUI_Prototype
                 {
                     departments.Text += WorkersChooseWindow.counters.departmentsList[i] + "\n";
                 }
-                
+
+                if (WorkersChooseWindow.counters.departmentsList.Count == 0)
+                {
+                    MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.PRODUCTS_LIST_ACCEPTED);
+                }
                 // end count departments
             }
             else
@@ -181,6 +188,7 @@ namespace GUI_Prototype
         {
             //ExcelManager.openfile();
             finishOrderButton.IsEnabled = true;
+            MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.PRODUCTS_LIST_MERGED);//?
         }
 
         private void finishOrderButton_Click(object sender, RoutedEventArgs e)
@@ -263,6 +271,7 @@ namespace GUI_Prototype
                 case "GUEST":
                     break;
                 case "MAIN_EMPLOYEE":
+                    MailList.ItemsSource = emailWrapper.Emails;
                     Utils.CAN_ACCEPT_ORDER = true;
                     Utils.CAN_REJECT_ORDER = true;
                     Utils.CAN_PREPARE_TEMPLATE = true;
@@ -271,6 +280,7 @@ namespace GUI_Prototype
                     Utils.CAN_FINISH_ORDER = true;
                     break;
                 case "DEPARTMENT_EMPLOYEE":
+                    MailList.ItemsSource = emailWrapper.Emails;
                     Utils.CAN_ADD_PRODUCTS = true;
                     Utils.CAN_CONFIRM_PRODUCTS = true;
                     break;

@@ -83,6 +83,11 @@ namespace GUI_Prototype
 
         public EmailWrapper()
         {
+            Refresh();
+        }
+
+        public void Refresh()
+        {
             messages = ReceiveAllMessages();
             Emails = new BindingList<Email>();
 
@@ -132,6 +137,7 @@ namespace GUI_Prototype
         //ditch this function and limit the bindinglist instead
         public BindingList<Email> EmailsWithStatus(MailStatus status)
         {
+            Refresh();//could be done better
             return new BindingList<Email>(Emails.Where(e => e.State == status).ToList());
         }
 
