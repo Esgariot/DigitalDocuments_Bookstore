@@ -167,8 +167,6 @@ namespace GUI_Prototype
                     departments.Text += WorkersChooseWindow.counters.departmentsList[i] + "\n";
                 }
                 
-
-
                 // end count departments
             }
             else
@@ -270,7 +268,6 @@ namespace GUI_Prototype
                     Utils.CAN_CONFIRM_TEMPLATE = true;
                     Utils.CAN_CONFIRM_ORDER = true;
                     Utils.CAN_FINISH_ORDER = true;
-                    finishOrderButton.IsEnabled = true;
                     break;
                 case "DEPARTMENT_EMPLOYEE":
                     Utils.CAN_ADD_PRODUCTS = true;
