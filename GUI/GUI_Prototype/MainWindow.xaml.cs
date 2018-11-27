@@ -174,10 +174,8 @@ namespace GUI_Prototype
 
                 if (WorkersChooseWindow.counters.departmentsList.Count == 0)
                 {
-                    finishOrderButton.IsEnabled = true;
                     MailList.ItemsSource = emailWrapper.EmailsWithStatus(MailStatus.PRODUCTS_LIST_ACCEPTED);
                 }
-
                 // end count departments
             }
             else
@@ -301,6 +299,8 @@ namespace GUI_Prototype
                 case "MAIN_EMPLOYEE":
                     acceptButton.IsEnabled = true;
                     rejectButton.IsEnabled = true;
+                    if (WorkersChooseWindow.counters.departmentsList.Count != 0)
+                        approveOrderButton.IsEnabled = false;
                     break;
                 case "DEPARTMENT_EMPLOYEE":
                     acceptButton.IsEnabled = false;
