@@ -154,14 +154,14 @@ namespace GUI_Prototype
             {
                 //approveOrderButton.IsEnabled = true;
                 // count departments, conditions for yes button, need add "if yes"
-                if (Utils.loggedUser == "dokumenty.department.1@gmail.com")
-                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.1@gmail.com");
-                else if (Utils.loggedUser == "dokumenty.department.2@gmail.com")
-                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.2@gmail.com");
-                else if (Utils.loggedUser == "dokumenty.department.3@gmail.com")
-                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.3@gmail.com");
-                else if (Utils.loggedUser == "dokumenty.department.4@gmail.com")
-                    WorkersChooseWindow.counters.departmentsList.Remove("dokumenty.department.4@gmail.com");
+                if (Utils.loggedUser == "ks.longinus.dzial1@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("ks.longinus.dzial1@gmail.com");
+                else if (Utils.loggedUser == "ks.longinus.dzial2@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("ks.longinus.dzial2@gmail.com");
+                else if (Utils.loggedUser == "ks.longinus.dzial3@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("ks.longinus.dzial3@gmail.com");
+                else if (Utils.loggedUser == "ks.longinus.dzial4@gmail.com")
+                    WorkersChooseWindow.counters.departmentsList.Remove("ks.longinus.dzial4@gmail.com");
 
                 departments.Text = "Do zatwierdzenia przez działy: " + "\n";
                 for (int i = 0; i < WorkersChooseWindow.counters.departmentsList.Count; i++)
@@ -204,7 +204,6 @@ namespace GUI_Prototype
             ArchiviseCurrentTransaction();
 
             // wygenerowanie pliku HTML
-            string pathToXML = ""; //UZUPELNIC !!!!!!!!!!!!!!
             PythonManager.APP = @"..\..\PurchaseOrderTemplateHTML.py";
             PythonManager.ARGS.Add(pathToXML);
             string arguments = PythonManager.PrepareArguments(PythonManager.ARGS);
